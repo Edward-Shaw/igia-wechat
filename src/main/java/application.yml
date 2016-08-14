@@ -1,0 +1,28 @@
+client:
+  index: http://igia.tunnel.qydev.com
+  version: beta-1.0.8
+
+service:
+  baseUrl: http://igia.tunnel.qydev.com/igia
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+#      host: dds-uf69435b6f15e3941.mongodb.rds.aliyuncs.com
+      username: igia
+      password: pl,okm123
+      port: 3717
+      database: igia     
+#      username: admin
+#      password: pl,okm123
+
+wx:
+  appID: wxc83cdc786fdedd7a
+  appSecret: c998ba83d6780414f2aabdc8b6c7ee82
+  token: igiasport2016
+  aesKey: HXUoveYFbly65WKV8KRZTkiaJHtmxbxTbeZcet6B42L
+  mediaUrlTemplate: https://api.weixin.qq.com/cgi-bin/media/get?access_token=%s&media_id=%s
+
+captcha:
+  storage: default
