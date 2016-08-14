@@ -45,6 +45,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
+			<version>3.2.0</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		
 		<!-- json format support -->
