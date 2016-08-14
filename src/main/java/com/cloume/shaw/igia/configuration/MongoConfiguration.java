@@ -36,13 +36,17 @@ public class MongoConfiguration extends AbstractMongoConfiguration {
 	@Override @Bean
 	public Mongo mongo() throws Exception {
 
-        // 构建鉴权信息，账号验证数据库名与数据库名一致
+        /*
+		// 构建鉴权信息，账号验证数据库名与数据库名一致
         List<MongoCredential> credentials = new ArrayList<MongoCredential>();
         credentials.add(MongoCredential.createScramSha1Credential(mongoUsername,
         		getDatabaseName(), mongoPassword.toCharArray()));
-
+		
         MongoClient client = new MongoClient(new ServerAddress(mongoHost, mongoPort), credentials);
-          
+        */
+		
+		MongoClient client = new MongoClient(mongoHost, mongoPort);
+		
         return client;
 	}
 

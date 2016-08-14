@@ -29,6 +29,28 @@ public class UserController extends AbstractController {
 	@Autowired private WxMpConfigStorage wxMpConfigStorage;
 	@Autowired private WxMpService wxMpService;
 	
+	@RequestMapping(method = RequestMethod.GET)
+	public String userPage(HttpServletRequest request){
+		
+		return "user";
+		/*
+		User userSession = (User) request.getSession().getAttribute("$_USER");
+		if(userSession == null){
+			return "error";
+		}
+
+		String openId = userSession.getId();
+		User userMongo = getMongoTemplate().findById(openId, User.class);
+		if(userMongo == null){
+			return "error";
+		}
+		
+		request.setAttribute("user", userMongo);
+		
+		return "user";
+		*/
+	}
+	
 	/**
 	 * 挑战机构的认证系统
 	 * @param organization 目前只能=ecnu

@@ -27,10 +27,9 @@ public abstract class AbstractController {
 		return principal == null ? "Unknown" : principal.getName();
 	}
 	
-	@Deprecated @Autowired private MongoTemplate mongoTemplate;
+	@Autowired private MongoTemplate mongoTemplate;
 
 	/**
-	 * @deprecated 为了规范结构, 20160721后的新代码不要再直接从controller中操作数据库，增加service进行操作
 	 * @return 数据库操作对象
 	 */
 	protected MongoTemplate getMongoTemplate() {
@@ -38,7 +37,6 @@ public abstract class AbstractController {
 	}
 	
 	/**
-	 * @deprecated 操作数据库代码移入service
 	 * 将object中指定属性的值更新到数据库中
 	 * @param id object在数据库中的主键
 	 * @param object
@@ -49,7 +47,6 @@ public abstract class AbstractController {
 	}
 	
 	/**
-	 * @deprecated 操作数据库代码移入service
 	 * @param id
 	 * @param object
 	 * @param keys
@@ -98,7 +95,6 @@ public abstract class AbstractController {
 	}
 	
 	/**
-	 * @deprecated 不要用了
 	 * 校验request body
 	 * @param body
 	 * @param each
@@ -115,7 +111,6 @@ public abstract class AbstractController {
 	}
 	
 	/**
-	 * @deprecated 用 {@link com.cloume.hsep.web.verify.Verifier} 代替
 	 * body中是否包含所有的必有属性
 	 * @param body request-body
 	 * @param keys 必须有的属性名称集合
@@ -126,7 +121,6 @@ public abstract class AbstractController {
 	}
 	
 	/**
-	 * @deprecated 不用這麼麻煩
 	 * @param limitation
 	 * @return
 	 */
@@ -141,7 +135,6 @@ public abstract class AbstractController {
 	}
 	
 	/**
-	 * @deprecated 不要用
 	 * @return
 	 */
 	protected int getDefaultPageSize(){
