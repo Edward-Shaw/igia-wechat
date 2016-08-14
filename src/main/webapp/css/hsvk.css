@@ -1,0 +1,15 @@
+@charset "utf-8";
+.right {text-align: right;}
+.head100{ width: 100%; }
+.head50{ width: 50%; }
+.head40{ width: 40%; }
+.head30{ width: 30%; }
+/*.body{ background-color: #EEEEEE;}*/
+.head-small{ width:25px; margin-right:5px; display:block }
+
+.weui_cell.multiline {
+	align-items: flex-start;
+}
+.cell_text_msg {
+	color: #888;
+}
