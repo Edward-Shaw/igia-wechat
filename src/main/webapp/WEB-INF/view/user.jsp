@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <!-- Your app title -->
-<title>教员信息</title>
+<title>会员信息</title>
 <!-- Path to Framework7 Library CSS, iOS Theme -->
 <link rel="stylesheet" href="<c:url value="/css/framework7.ios.min.css"/>" />
 <!-- Path to Framework7 color related styles, iOS Theme -->
@@ -64,7 +64,7 @@
 			<div class="pages">
 				<div data-page="teacher" class="page">
 					<div class="page-content" style="padding-top: 20px;">
-						<div class="content-block-title">请完善个人信息</div>
+						<div class="content-block-title">请完善会员信息</div>
 						<form id="info-form" class="list-block store-data">
 							<ul>
 								<!-- Text inputs -->
@@ -96,38 +96,13 @@
 									<div class="item-content">
 										<div class="item-inner">
 											<div class="item-title label">
-												学号<span style="color: red">*</span>
-											</div>
-											<div class="item-input">
-												<input type="tel" name="studentId" placeholder="请填写学号" />
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="item-content">
-										<div class="item-inner">
-											<div class="item-title label">
 												密码<span style="color: red">*</span>
 											</div>
 											<div class="item-input">
-												<input type="password" name="password" placeholder="公共数据库密码" />
+												<input type="password" name="password" placeholder="请输入密码" />
 											</div>
 										</div>
 									</div>
-								</li>
-								<li style="text-align: right;">
-									<label class="label-checkbox item-content" > 
-										<input type="checkbox" id="agreement" name="ks-checkbox" value="accept" checked>
-											<div class="item-media">
-												<i class="icon icon-form-checkbox"></i>
-											</div>
-											<div class="item-inner">
-												<div class="item-title">
-													我已阅读并同意<a href="#" data-popup=".popup-about" class="open-popup">家教工作准则</a>
-												</div>
-											</div>
-									</label>
 								</li>
 							</ul>
 							<div class="list-block">
@@ -154,7 +129,7 @@
 						</form>
 
 						<p style="margin-left: 5%">
-							<a href="#" class="button form-to-json button-big active" style="width: 95%">提交</a>
+							<a href="#" class="button form-to-json button-big active" style="width: 95%">提交注册信息</a>
 						</p>
 					</div>
 				</div>
@@ -200,7 +175,7 @@
 		$$('.form-to-json').on('click', function(){
 			var formData = myApp.formToJSON('#info-form');
 			if(!$$('#agreement')[0].checked) {
-				myApp.alert("请仔细阅读华师大家教工作准则", '必须同意家教工作准则!');
+				myApp.alert("请仔细阅读会员手册", '必须同意会员手册!');
 				return true;
 			}
 			if(formData["name"] == ''){
@@ -215,12 +190,8 @@
 				myApp.alert("手机号码位数错误,请重新输入11位手机号!", '手机号码位数错误!');
 				return true;
 			}
-			if(formData["studentId"] == ''){
-				myApp.alert("请输入您的学号", '学号不能为空!');
-				return false;
-			}
 			if(formData["password"] == ''){
-				myApp.alert("请输入您的公共数据库密码", '密码不能为空!');
+				myApp.alert("请输入您的密码", '密码不能为空!');
 				return false;
 			}
 			if(formData["code"] == ''){
@@ -240,11 +211,11 @@
 			  	  dataType: 'json',
 			  	  success: function (data, status, xhr){
 			  	  	if(data.code == -3){
-				  		myApp.alert(data.message, 'IDC登录失败!', function () {
+				  		myApp.alert(data.message, '注册失败!', function () {
 				  			location.reload();
 				  	    });
 			  	  	}else if(data.code == -2){
-				  		myApp.alert(data.message, '不能重复录入!', function () {
+				  		myApp.alert(data.message, '不能重复注册!', function () {
 				  			wx.closeWindow();
 				  	    });
 			  	  	}else{
