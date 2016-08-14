@@ -1,0 +1,41 @@
+{
+    "menu": {
+        "button": [
+            {
+            	"name": "选择身份",
+                "sub_button": [
+                	{
+		                "type": "view",
+		                "name": "我是教员",
+		                "url": "http://jiajiao.tunnel.qydev.com/service-wx/oauth2/aHR0cDovL2ppYWppYW8udHVubmVsLnF5ZGV2LmNvbS9zZXJ2aWNlLXd4L3VzZXIvaWRlbnRpZnkvdGVhY2hlcg=="
+		            },
+                	{
+		                "type": "view",
+		                "name": "我是家长",
+		                "url": "http://jiajiao.tunnel.qydev.com/service-wx/oauth2/aHR0cDovL2ppYWppYW8udHVubmVsLnF5ZGV2LmNvbS9zZXJ2aWNlLXd4L3VzZXIvaWRlbnRpZnkvcGFyZW50"
+		            }
+		        ]
+		    },
+            {
+                "type": "view",
+                "name": "在线考试",
+                "url": "http://jiajiao.tunnel.qydev.com/service-wx/oauth2/aHR0cDovL2ppYWppYW8udHVubmVsLnF5ZGV2LmNvbS9oc2VjZS9odG1sL2luZGV4Lmh0bWw="
+            },
+            {
+            	"name": "我的",
+                "sub_button": [
+                	{
+		                "type": "view",
+		                "name": "发布需求",
+		                "url": "http://jiajiao.tunnel.qydev.com/service-wx/oauth2/aHR0cDovL2ppYWppYW8udHVubmVsLnF5ZGV2LmNvbS9jbGllbnQtd3g="
+		            },
+                	{
+		                "type": "view",
+		                "name": "我的信息",
+		                "url": "http://jiajiao.tunnel.qydev.com/service-wx/oauth2/aHR0cDovL2ppYWppYW8udHVubmVsLnF5ZGV2LmNvbS9oc2VjZS9odG1sL215UGFnZS5odG1s"
+		            }
+		        ]
+		    }
+        ]
+    }
+}

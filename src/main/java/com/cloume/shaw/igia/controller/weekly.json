@@ -1,0 +1,16 @@
+{
+    "menu": {
+        "button": [
+            {
+            	"type": "view",
+                "name": "进入我的应用",
+                "url": "http://hsep.tunnel.qydev.com"
+            },
+        	{
+                "type": "click",
+                "name": "关于",
+                "key": "V1003"
+            }
+        ]
+    }
+}
