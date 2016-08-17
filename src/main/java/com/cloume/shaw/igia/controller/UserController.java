@@ -1,7 +1,7 @@
 package com.cloume.shaw.igia.controller;
 
-import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cloume.shaw.igia.resource.User;
 import com.cloume.shaw.igia.utils.RestResponse;
+import com.cloume.shaw.igia.utils.Updater;
 
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpService;
@@ -73,7 +74,7 @@ public class UserController extends AbstractController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public RestResponse<Object> register(
+	public RestResponse<User> register(HttpServletRequest request,
 			@RequestBody Map<String, Object> body
 			){
 		final String[] fields = {"name", "mobile", "password", "address"};
@@ -81,7 +82,35 @@ public class UserController extends AbstractController {
 			return RestResponse.bad(404, String.format("properties %s can not missing", StringUtils.join(fields, ',')), null);
 		}
 		
-		return RestResponse.good("succeed");
+		User userSession = (User) request.getSession().getAttribute("$_USER");
+		if(userSession == null){
+			return RestResponse.bad(-1, "not wechat client.");
+		}
+		
+		//根据open_id查找用户的注册信息，如果没有则跳转到注册页面进行注册
+		String openId = userSession.getId();
+		
+		Update update = new Update();
+		update.set("updatedTime", new Date().getTime());
+		
+		int res = getMongoTemplate().updateMulti(new Query(Criteria.where("_id").is(openId)), update, User.class).getN();
+		if(res != 1){
+			return new RestResponse<User>(-3, "信息登记失败,此用户不存在,请退出公众号重新进入!", userSession);
+		}
+		
+		/*
+		long exists = getMongoTemplate().count(Query.query(Criteria.where("mobile").is(user.getMobile())), User.class);
+		if(exists > 0) {
+			return RestResponse.bad(-1, String.format("mobile %s re-bound", user.getMobile()), null);
+		}
+		*/
+
+		User userMongo = getMongoTemplate().findById(openId, User.class);
+		if(userMongo == null){
+			RestResponse.bad(-2, "500 error");
+		}
+		
+		return RestResponse.good(userMongo);
 	}
 	
 }

@@ -1,8 +1,6 @@
 package com.cloume.shaw.igia.resource;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -27,6 +25,8 @@ public class User implements Serializable {
 	private String gender;
 	private int age;
 	private String province, city;
+	
+	private String password;
 	
 	/**
 	 * 是否被禁用
@@ -195,6 +195,14 @@ public class User implements Serializable {
 
 	public void setCreatedTime(long createdTime) {
 		this.createdTime = createdTime;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
