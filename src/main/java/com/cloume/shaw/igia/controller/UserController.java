@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cloume.shaw.igia.resource.User;
 import com.cloume.shaw.igia.utils.RestResponse;
-import com.sun.xml.internal.ws.util.StringUtils;
 
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpService;
@@ -32,23 +32,21 @@ public class UserController extends AbstractController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String userPage(HttpServletRequest request){
 		
-		return "user";
-		/*
 		User userSession = (User) request.getSession().getAttribute("$_USER");
 		if(userSession == null){
-			return "error";
+			return "register";
 		}
-
+		
+		//根据open_id查找用户的注册信息，如果没有则跳转到注册页面进行注册
 		String openId = userSession.getId();
 		User userMongo = getMongoTemplate().findById(openId, User.class);
 		if(userMongo == null){
-			return "error";
+			return "register";
 		}
 		
 		request.setAttribute("user", userMongo);
 		
 		return "user";
-		*/
 	}
 	
 	/**
@@ -69,19 +67,18 @@ public class UserController extends AbstractController {
 	}
 	
 	/**
-	 * 仅用于华东师大教员认证
+	 * 提交用户注册信息
 	 * @param body
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public RestResponse<Object> authorize(
+	public RestResponse<Object> register(
 			@RequestBody Map<String, Object> body
 			){
-		
-		final String[] fields = {"user", "number", "password", "captcha"};
+		final String[] fields = {"name", "mobile", "password", "address"};
 		if(!verify(body, Arrays.asList(fields))){
-			return RestResponse.bad(404, String.format("properties %s can not missing"/*, StringUtils.join(fields, ',')*/), null);
+			return RestResponse.bad(404, String.format("properties %s can not missing", StringUtils.join(fields, ',')), null);
 		}
 		
 		return RestResponse.good("succeed");

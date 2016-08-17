@@ -96,6 +96,18 @@
 									<div class="item-content">
 										<div class="item-inner">
 											<div class="item-title label">
+												地址<span style="color: red">*</span>
+											</div>
+											<div class="item-input">
+												<input type="tel" name="mobilePhone" placeholder="请填写您的住址">
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">
 												密码<span style="color: red">*</span>
 											</div>
 											<div class="item-input">

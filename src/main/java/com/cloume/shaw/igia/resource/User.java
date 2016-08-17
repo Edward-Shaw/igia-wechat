@@ -5,13 +5,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-public class User extends People implements Serializable {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class User implements Serializable {
 	
 	private static final long serialVersionUID = 6428260202258747911L;
 
 	@Id
 	private String id;
+	
+	@JsonProperty("created_time") @Field("created_time")
+	private long createdTime = System.currentTimeMillis();
+
+	/**
+	 * 用户姓名
+	 */
+	private String name;
+	
+	private String gender;
+	private int age;
+	private String province, city;
 	
 	/**
 	 * 是否被禁用
@@ -42,11 +57,6 @@ public class User extends People implements Serializable {
 	 * 头像
 	 */
 	private String avatar;
-	
-	/**
-	 * 身份证号
-	 */
-	private String idcard;
 
 	/**
 	 * 用户类型未知
@@ -139,12 +149,52 @@ public class User extends People implements Serializable {
 		this.avatar = avatar;
 	}
 
-	public String getIdcard() {
-		return idcard;
+	public String getName() {
+		return name;
 	}
 
-	public void setIdcard(String idcard) {
-		this.idcard = idcard;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	public long getCreatedTime() {
+		return createdTime;
+	}
+
+	public void setCreatedTime(long createdTime) {
+		this.createdTime = createdTime;
 	}
 
 }
