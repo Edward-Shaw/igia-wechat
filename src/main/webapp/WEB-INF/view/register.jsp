@@ -99,7 +99,7 @@
 												地址<span style="color: red">*</span>
 											</div>
 											<div class="item-input">
-												<input type="tel" name="address" placeholder="请填写您的住址">
+												<input type="text" name="address" placeholder="请填写您的住址">
 											</div>
 										</div>
 									</div>
@@ -231,7 +231,7 @@
 				  			wx.closeWindow();
 				  	    });
 			  	  	}else{
-				  		myApp.alert(data.message, '登记成功!', function () {
+				  		myApp.alert(data.message, '注册成功!', function () {
 				  			wx.closeWindow();
 				  	    });
 			  	  	}
