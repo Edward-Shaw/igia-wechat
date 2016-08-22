@@ -41,7 +41,7 @@ public class UserController extends AbstractController {
 		//根据open_id查找用户的注册信息，如果没有则跳转到注册页面进行注册
 		String openId = userSession.getId();
 		User userMongo = getMongoTemplate().findById(openId, User.class);
-		if(userMongo == null){
+		if(userMongo == null || !userMongo.isBanned()){
 			return "register";
 		}
 		
@@ -92,7 +92,9 @@ public class UserController extends AbstractController {
 		
 		Update update = new Update();
 		update.set("updatedTime", new Date().getTime());
-		
+		update.set("banned", "true");
+		update.set("mobile", body.get("mobile"));
+		update.set("address", body.get("address"));
 		int res = getMongoTemplate().updateMulti(new Query(Criteria.where("_id").is(openId)), update, User.class).getN();
 		if(res != 1){
 			return new RestResponse<User>(-3, "信息登记失败,此用户不存在,请退出公众号重新进入!", userSession);
