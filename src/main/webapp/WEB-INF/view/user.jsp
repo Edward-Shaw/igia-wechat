@@ -64,7 +64,7 @@
 			<div class="pages">
 				<div data-page="teacher" class="page">
 					<div class="page-content" style="padding-top: 20px;">
-						<div class="content-block-title">请完善会员信息</div>
+						<div class="content-block-title">我的会员信息</div>
 						<form id="info-form" class="list-block store-data">
 							<ul>
 								<!-- Text inputs -->
@@ -72,10 +72,10 @@
 									<div class="item-content">
 										<div class="item-inner">
 											<div class="item-title label">
-												姓名<span style="color: red">*</span>
+												姓名：
 											</div>
 											<div class="item-input">
-												<input type="text" name="name" placeholder="请填写真实姓名" />
+												<span style="color: red">${user.name}</span>
 											</div>
 										</div>
 									</div>
@@ -84,10 +84,10 @@
 									<div class="item-content">
 										<div class="item-inner">
 											<div class="item-title label">
-												手机号<span style="color: red">*</span>
+												手机号：
 											</div>
 											<div class="item-input">
-												<input type="tel" name="mobilePhone" placeholder="请填写手机号">
+												<span style="color: red">${user.mobile}</span>
 											</div>
 										</div>
 									</div>
@@ -96,10 +96,10 @@
 									<div class="item-content">
 										<div class="item-inner">
 											<div class="item-title label">
-												地址<span style="color: red">*</span>
+												地址：
 											</div>
 											<div class="item-input">
-												<input type="tel" name="mobilePhone" placeholder="请填写您的住址">
+												<span style="color: red">${user.address}</span>
 											</div>
 										</div>
 									</div>
@@ -108,40 +108,19 @@
 									<div class="item-content">
 										<div class="item-inner">
 											<div class="item-title label">
-												密码<span style="color: red">*</span>
+												积分：
 											</div>
 											<div class="item-input">
-												<input type="password" name="password" placeholder="请输入密码" />
+												<span style="color: red">还没有积分</span>
 											</div>
 										</div>
 									</div>
 								</li>
 							</ul>
-							<div class="list-block">
-						         <div class="row">
-						           <div class="col-66">
-						               <ul>
-						                <li>
-						                   <div class="item-content">
-						                     <div class="item-inner">
-						                        <div class="item-title label">验证码<span style="color:red">*</span></div>
-						                        <div class="item-input">
-						                          <input type="text" name="code" placeholder="请填写验证码">
-						                        </div>
-						                     </div>
-						                   </div>
-						                </li>
-						               </ul> 
-						           </div>
-						           <div class="col-33" >
-						             <img src="<c:url value="/img/${openId}.jpg"/>" width="80px" height="42px">
-						           </div>
-						         </div>
-						       </div>
 						</form>
 
 						<p style="margin-left: 5%">
-							<a href="#" class="button form-to-json button-big active" style="width: 95%">提交注册信息</a>
+							<a href="#" class="button form-to-json button-big active" style="width: 95%">确定</a>
 						</p>
 					</div>
 				</div>
@@ -175,72 +154,9 @@
 	</div>
 
 	<script>
-		function checkMobile(str) {
-		    var re = /^1\d{10}$/;
-		    if (re.test(str)) {
-		        return true;
-		    } else {
-		        return false;
-		    }
-		}
 		var mainView = myApp.addView('.view-main');
 		$$('.form-to-json').on('click', function(){
-			var formData = myApp.formToJSON('#info-form');
-			if(!$$('#agreement')[0].checked) {
-				myApp.alert("请仔细阅读会员手册", '必须同意会员手册!');
-				return true;
-			}
-			if(formData["name"] == ''){
-				myApp.alert("请输入您的姓名", '姓名不能为空!');
-				return false;
-			}
-			if(formData["mobilePhone"] == ''){
-				myApp.alert("请输入您的手机号码", '手机号码不能为空!');
-				return false;
-			}
-			if(!checkMobile(formData["mobilePhone"])){
-				myApp.alert("手机号码位数错误,请重新输入11位手机号!", '手机号码位数错误!');
-				return true;
-			}
-			if(formData["password"] == ''){
-				myApp.alert("请输入您的密码", '密码不能为空!');
-				return false;
-			}
-			if(formData["code"] == ''){
-				myApp.alert("请输入图片中的数字", '验证码不能为空!');
-				return false;
-			}
-
-			$$.ajax({
-			  	  url: "teacher/input",
-			  	  method: 'POST',
-			  	  data: JSON.stringify(formData),
-			  	  processData: false,
-			  	  contentType: "application/json",
-			  	  beforeSend: function(xhr) {
-				       xhr.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
-				    },
-			  	  dataType: 'json',
-			  	  success: function (data, status, xhr){
-			  	  	if(data.code == -3){
-				  		myApp.alert(data.message, '注册失败!', function () {
-				  			location.reload();
-				  	    });
-			  	  	}else if(data.code == -2){
-				  		myApp.alert(data.message, '不能重复注册!', function () {
-				  			wx.closeWindow();
-				  	    });
-			  	  	}else{
-				  		myApp.alert(data.message, '登记成功!', function () {
-				  			wx.closeWindow();
-				  	    });
-			  	  	}
-			  	  },
-			  	  complete: function(xhr, status){
-			  		;
-			  	  },
-			  	  error: function(xhr, status){},
-			});
+			wx.closeWindow();
 		});
 	</script>
 </body>
