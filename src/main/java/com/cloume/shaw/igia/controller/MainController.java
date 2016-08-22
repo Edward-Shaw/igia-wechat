@@ -114,6 +114,7 @@ public class MainController extends AbstractController {
 			user.setCity(wxMpUser.getCity());
 			user.setProvince(wxMpUser.getProvince());
 			user.setCreatedTime(System.currentTimeMillis());
+			user.setBanned(false);
 			getMongoTemplate().save(user, "user");
 		}else if(user.getAvatar() == null || user.getAvatar().isEmpty()){
 			user.setAvatar(wxMpUser.getHeadImgUrl());
