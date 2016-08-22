@@ -12,7 +12,7 @@ spring:
 #      host: dds-uf69435b6f15e3941.mongodb.rds.aliyuncs.com
       username: igia
       password: pl,okm123
-      port: 3717
+      port: 27017
       database: igia     
 #      username: admin
 #      password: pl,okm123
