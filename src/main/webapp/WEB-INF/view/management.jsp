@@ -8,10 +8,10 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Welcome</title>
+		<title>逸伽后台</title>
 	</head> 
 	<body>
-		<c:url value="http://www.cloume.com" var="messageUrl" />
+		<c:url value="http://www.bing.com" var="messageUrl" />
 		<a href="${messageUrl}">:)</a>
 	</body>
 </html>
