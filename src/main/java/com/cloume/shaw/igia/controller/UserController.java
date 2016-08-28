@@ -117,7 +117,7 @@ public class UserController extends AbstractController {
 	
 	@RequestMapping(value = "/subscribe", method = RequestMethod.GET)
 	public String subscribe(HttpServletRequest request){
-		
+		/*
 		User userSession = (User) request.getSession().getAttribute("$_USER");
 		if(userSession == null){
 			return "register";
@@ -131,7 +131,7 @@ public class UserController extends AbstractController {
 		}
 		
 		request.setAttribute("user", userMongo);
-		
+		*/
 		return "subscribe";
 	}
 	
