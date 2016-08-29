@@ -81,7 +81,7 @@
 						<div class="list-block">
 						  <ul>
 						    <li>
-						      <a href="#" class="item-link smart-select">
+						      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 						        <select name="fruits">
 						          <option value="apple" selected>涂鸦(3-4岁)</option>
 						          <option value="pineapple">儿童画1级(4-5岁)</option>
@@ -100,7 +100,7 @@
 						      </a>
 						    </li>
 						    <li>
-						      <a href="#" class="item-link smart-select">
+						      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 							        <select name="fruits">
 							          <option value="apple" selected>基础(大于等于3.5岁)</option>
 							          <option value="pineapple">提高(6岁以上或有基础)</option>
@@ -114,7 +114,7 @@
 						      	</a>
 						      </li>
 						     <li>
-						      <a href="#" class="item-link smart-select">
+						      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 							        <select name="fruits">
 							          <option value="apple" selected>大于等于5岁</option>
 							        </select>
@@ -127,7 +127,7 @@
 						      	</a>
 						      </li>
 						     <li>
-						      <a href="#" class="item-link smart-select">
+						      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 							        <select name="fruits">
 							          <option value="apple" selected>基础(4-6岁)</option>
 							          <option value="pineapple">提高(7-12岁或有基础)</option>
@@ -141,7 +141,7 @@
 						      	</a>
 						      </li>
 						     <li>
-						      <a href="#" class="item-link smart-select">
+						      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 							        <select name="fruits">
 							          <option value="apple" selected>儿童瑜伽(3岁以上，父母不参加)</option>
 							          <option value="pineapple">亲子瑜伽(3岁以上，父母一起参加)</option>
@@ -155,7 +155,7 @@
 						      	</a>
 						      </li>
 						     <li>
-						      <a href="#" class="item-link smart-select">
+						      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 							        <select name="fruits">
 							          <option value="apple" selected>学龄前(3-5岁)</option>
 							          <option value="pineapple">学龄(6岁以上)</option>
