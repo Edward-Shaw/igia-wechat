@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <!-- Your app title -->
-<title>活动预约</title>
+<title>我预约的活动</title>
 <!-- Path to Framework7 Library CSS, iOS Theme -->
 <link rel="stylesheet" href="<c:url value="/css/framework7.ios.min.css"/>" />
 <!-- Path to Framework7 color related styles, iOS Theme -->
@@ -67,7 +67,7 @@
 			<div class="pages">
 				<div class="navbar" style="text-align:center">
 					  <div class="navbar-inner" style="text-align:center">
-					    <div class="center" style="text-align:center">活动预约(含体验预约)</div>
+					    <div class="center" style="text-align:center">我的活动预约(含体验预约)</div>
 					  </div>
 				</div>
 				

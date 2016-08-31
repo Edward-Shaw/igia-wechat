@@ -31,7 +31,7 @@
 	
 	var load = function(){
 		$$.ajax({
-		  	  url: "http://jiajiao.tunnel.qydev.com/service-wx/jsapisign",
+		  	  url: "http://igia.tunnel.qydev.com/igia/jsapisign",
 		  	  method: 'POST',
 		  	  data: JSON.stringify({url: location.href}),
 		  	  processData: false,
