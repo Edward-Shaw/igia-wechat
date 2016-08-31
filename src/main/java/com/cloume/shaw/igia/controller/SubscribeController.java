@@ -4,10 +4,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cloume.shaw.igia.resource.Subscribe;
 import com.cloume.shaw.igia.resource.User;
 
 @RequestMapping(value = "/subscribe")
@@ -23,6 +26,14 @@ public class SubscribeController extends AbstractController {
 		
 		//根据open_id查找用户的注册信息，如果没有则跳转到注册页面进行注册
 		String openId = userSession.getId();
+		
+		Query query = new Query(Criteria.where("user.openId").is(openId));
+		Subscribe subscribe = getMongoTemplate().findOne(query, Subscribe.class);
+		if(subscribe != null){
+			request.setAttribute("subscribe", subscribe);
+			return "mySubscribe";
+		}
+		
 		User userMongo = getMongoTemplate().findById(openId, User.class);
 		if(userMongo == null || !userMongo.isBanned()){
 			return "register";
@@ -42,7 +53,7 @@ public class SubscribeController extends AbstractController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String submitSubscribeInfo(HttpServletRequest request, 
 			@RequestBody Map<String, Object> body){
-		
+		//TODO:save subscribe info.
 		return "mySubscribe";
 	}
 }
