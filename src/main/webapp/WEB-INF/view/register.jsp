@@ -117,6 +117,7 @@
 									</div>
 								</li>
 							</ul>
+							<!-- 
 							<div class="list-block">
 						         <div class="row">
 						           <div class="col-66">
@@ -138,6 +139,7 @@
 						           </div>
 						         </div>
 						       </div>
+						        -->
 						</form>
 
 						<p style="margin-left: 5%">

@@ -51,23 +51,6 @@ public class UserController extends AbstractController {
 	}
 	
 	/**
-	 * 挑战机构的认证系统
-	 * @param organization 目前只能=ecnu
-	 * @param user 用户Id
-	 * @return
-	 */
-	@ResponseBody
-	@RequestMapping(value = "/{id}", params = {"organization=ecnu", "user"}, method = RequestMethod.GET)
-	public RestResponse<Object> challenge(HttpServletRequest request, String organization, String user){
-		User found = getMongoTemplate().findById(user, User.class, "user");
-		if(found == null){
-			return RestResponse.bad(404, String.format("User %s not exists", user), null);
-		}
-		
-		return RestResponse.good("succeed");
-	}
-	
-	/**
 	 * 提交用户注册信息
 	 * @param body
 	 * @return
@@ -113,26 +96,6 @@ public class UserController extends AbstractController {
 		}
 		
 		return RestResponse.good(userMongo);
-	}
-	
-	@RequestMapping(value = "/subscribe", method = RequestMethod.GET)
-	public String subscribe(HttpServletRequest request){
-		/*
-		User userSession = (User) request.getSession().getAttribute("$_USER");
-		if(userSession == null){
-			return "register";
-		}
-		
-		//根据open_id查找用户的注册信息，如果没有则跳转到注册页面进行注册
-		String openId = userSession.getId();
-		User userMongo = getMongoTemplate().findById(openId, User.class);
-		if(userMongo == null || !userMongo.isBanned()){
-			return "register";
-		}
-		
-		request.setAttribute("user", userMongo);
-		*/
-		return "subscribe";
 	}
 	
 }
