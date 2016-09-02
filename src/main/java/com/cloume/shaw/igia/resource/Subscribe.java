@@ -16,7 +16,7 @@ public class Subscribe {
 	private long createTime;
 	
 	//预约的活动列表
-	private ArrayList<Item> items;
+	private ArrayList<Item> items = new ArrayList<>();
 	
 	//预约的活动时间
 	private long subscribeTime;
