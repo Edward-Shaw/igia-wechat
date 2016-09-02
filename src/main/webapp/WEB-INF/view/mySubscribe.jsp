@@ -66,9 +66,9 @@
 		<div class="view view-main">
 			<div class="pages">
 				<div class="navbar" style="text-align:center">
-					  <div class="navbar-inner" style="text-align:center">
-					    <div class="center" style="text-align:center">我的活动预约(含体验预约)</div>
-					  </div>
+					<div class="navbar-inner" style="text-align:center">
+					  <div class="center" style="text-align:center">我的活动预约(含体验预约)</div>
+					</div>
 				</div>
 				
 				<div data-page="teacher" class="page">
@@ -81,101 +81,16 @@
 		            </div>
 					<div class="page-content" style="padding-top: 20px;">
 						<div class="content-block-title"></div>
-						<div class="list-block">
-						  <ul>
-						    <li>
-						      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-						        <select name="fruits">
-						          <option value="apple" selected>涂鸦(3-4岁)</option>
-						          <option value="pineapple">儿童画1级(4-5岁)</option>
-						          <option value="apple" selected>小画家1级(5-6岁)</option>
-						          <option value="pineapple">小画家2级(6-7岁)</option>
-						          <option value="apple" selected>小画家3级(7岁以上)</option>
-						          <option value="pineapple">动漫(7岁以上)</option>
-						          <option value="apple" selected>素描(9岁以上)</option>
-						        </select>
-						        <div class="item-content">
-						          <div class="item-inner">
-						            <div class="item-title">绘画</div>
-						            <div class="item-after">点此选择具体活动</div>
-						          </div>
-						        </div>
-						      </a>
-						    </li>
-						    <li>
-						      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-							        <select name="fruits">
-							          <option value="apple" selected>基础(大于等于3.5岁)</option>
-							          <option value="pineapple">提高(6岁以上或有基础)</option>
-							        </select>
-							        <div class="item-content">
-							          <div class="item-inner">
-							            <div class="item-title">中国舞</div>
-							            <div class="item-after">点此选择具体活动</div>
-							          </div>
-							        </div>
-						      	</a>
-						      </li>
-						     <li>
-						      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-							        <select name="fruits">
-							          <option value="apple" selected>大于等于5岁</option>
-							        </select>
-							        <div class="item-content">
-							          <div class="item-inner">
-							            <div class="item-title">拉丁舞</div>
-							            <div class="item-after">点此选择具体活动</div>
-							          </div>
-							        </div>
-						      	</a>
-						      </li>
-						     <li>
-						      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-							        <select name="fruits">
-							          <option value="apple" selected>基础(4-6岁)</option>
-							          <option value="pineapple">提高(7-12岁或有基础)</option>
-							        </select>
-							        <div class="item-content">
-							          <div class="item-inner">
-							            <div class="item-title">跆拳道</div>
-							            <div class="item-after">点此选择具体活动</div>
-							          </div>
-							        </div>
-						      	</a>
-						      </li>
-						     <li>
-						      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-							        <select name="fruits">
-							          <option value="apple" selected>儿童瑜伽(3岁以上，父母不参加)</option>
-							          <option value="pineapple">亲子瑜伽(3岁以上，父母一起参加)</option>
-							        </select>
-							        <div class="item-content">
-							          <div class="item-inner">
-							            <div class="item-title">瑜伽</div>
-							            <div class="item-after">点此选择具体活动</div>
-							          </div>
-							        </div>
-						      	</a>
-						      </li>
-						     <li>
-						      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-							        <select name="fruits">
-							          <option value="apple" selected>学龄前(3-5岁)</option>
-							          <option value="pineapple">学龄(6岁以上)</option>
-							        </select>
-							        <div class="item-content">
-							          <div class="item-inner">
-							            <div class="item-title">夏令营</div>
-							            <div class="item-after">点此选择具体活动</div>
-							          </div>
-							        </div>
-						      	</a>
-						      </li>
-						  </ul>
-						  <div class="list-block-label">预约说明：一次只能预约一个活动。</div>
+						<div class="list-block" style="margin-left: 20px; margin-top: 40px">
+						  <p>客户名：${subscribe.user.username}</p>
+						  <p>联系方式：${subscribe.user.mobile}</p>
+						  <p>联系地址：${subscribe.user.address}</p>
+						  <p>预约提交时间：${subscribe.createTime}</p>
+						  <p>预约活动：${details}</p>
+						  <div class="list-block-label" style="margin-left:-20px;">您的活动已预约成功，我们将尽快和您联系。</div>
 						</div>
 						<p style="margin-left: 5%">
-							<a href="#" class="button form-to-json button-big active" style="width: 95%">提交预约</a>
+							<a href="#" id="exit" class="button form-to-json button-big active" style="width: 95%">退出</a>
 						</p>
 					</div>
 				</div>
@@ -185,7 +100,7 @@
 
 	<script>
 		var mainView = myApp.addView('.view-main');
-		$$('.form-to-json').on('click', function(){
+		$$('#exit').on('click', function(){
 			wx.closeWindow();
 		});
 	</script>
