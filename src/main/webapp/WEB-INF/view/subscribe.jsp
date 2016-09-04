@@ -175,8 +175,25 @@
 								        </div>
 							      	</a>
 							      </li>
+							      <li>
+							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
+								        <select name="activity_class">
+								          <option value="time_default" selected>请选择一个活动班</option>
+								          <option value="one">一班</option>
+								          <option value="two">二班</option>
+								          <option value="two">三班</option>
+								          <option value="two">四班</option>
+								        </select>
+								        <div class="item-content">
+								          <div class="item-inner">
+								            <div class="item-title">活动班</div>
+								            <div class="item-after">点此选择一个活动班(预约时间)</div>
+								          </div>
+								        </div>
+							      	</a>
+							      </li>
 							  </ul>
-							  <div class="list-block-label">预约说明：一次最多只能预约两个活动。</div>
+							  <div class="list-block-label">预约说明：一次最多只能预约两个活动；预约成功后我们将通过电话与您联系确认。</div>
 							</div>
 						</form>
 						<p style="margin-left: 5%">
@@ -200,17 +217,25 @@
 			console.log(formData);
 			
 			var count = 0;
+			var time_selected = false;
 			for(item in formData){
-				if(formData[item] != "default"){
+				if(formData[item] == "default"){
 					count++;
+				}else if(formData[item] == "time_default"){
+					time_selected = true;
 				}
 			}
-			console.log(count);
-			if(count > 2){
+
+			if(count < 4){
 				myApp.alert("一次只能最多只能同时预约2个活动", '预约超过上限!');
 				return false;
-			}else if(count == 0){
+			}else if(count == 6){
 				myApp.alert("请进入活动列表页面选择一个具体活动进行预约", '没有预约!');
+				return false;
+			}
+			
+			if(!time_selected){
+				myApp.alert("请前往通知公告栏的'作息更新'查看活动班信息", "请选择一个活动班");
 				return false;
 			}
 			
@@ -230,7 +255,7 @@
 							wx.closeWindow();
 						});
 					} else {
-						myApp.alert('您已成功预约逸伽体验活动，我们将尽快与您联系', '预约成功!', function() {
+						myApp.alert('您已成功预约逸伽体验活动，我们将电话与您联系确认', '预约成功!', function() {
 							wx.closeWindow();
 						});
 					}

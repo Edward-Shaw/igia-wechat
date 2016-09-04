@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cloume.shaw.igia.resource.Subscribe;
 import com.cloume.shaw.igia.resource.User;
+import com.cloume.shaw.igia.resource.Subscribe.Item;
 import com.cloume.shaw.igia.utils.RestResponse;
 import com.cloume.shaw.igia.utils.Updater;
 
@@ -46,6 +48,38 @@ public class UserController extends AbstractController {
 		}
 		
 		request.setAttribute("user", userMongo);
+		
+		Query query = new Query(Criteria.where("user.openId").is(openId));
+		Subscribe subscribe = getMongoTemplate().findOne(query, Subscribe.class);
+		if(subscribe != null){
+			String details = "";
+			for(Item item : subscribe.getItems()){
+				switch(item.getCategory()){
+				case "painting":
+					details += "绘画 ";
+					break;
+				case "classic":
+					details += "中国舞 ";
+					break;
+				case "latin":
+					details += "拉丁  ";
+					break;
+				case "taekwondo":
+					details += "跆拳道 ";
+					break;
+				case "yoga":
+					details += "瑜伽 ";
+					break;
+				case "summer_camp":
+					details += "夏令营 ";
+					break;
+				default:
+					details += "";
+				}
+			}
+			request.setAttribute("details", details);
+			request.setAttribute("subscribe", subscribe);
+		}
 		
 		return "user";
 	}

@@ -118,6 +118,48 @@
 								</li>
 							</ul>
 						</form>
+						<div class="content-block-title">我的活动预约</div>
+						<form id="info-form" class="list-block store-data">
+							<ul>
+								<!-- Text inputs -->
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">
+												已预约：
+											</div>
+											<div class="item-input">
+												<span style="color: red">${details}</span>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">
+												预约状态：
+											</div>
+											<div class="item-input">
+												<span style="color: red">${subscribe.state}</span>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">
+												预约时间：
+											</div>
+											<div class="item-input">
+												<span style="color: red">${subscribe.createTime}</span>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</form>
 
 						<p style="margin-left: 5%">
 							<a href="#" class="button form-to-json button-big active" style="width: 95%">确定</a>
