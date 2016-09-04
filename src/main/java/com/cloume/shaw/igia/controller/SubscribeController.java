@@ -17,6 +17,7 @@ import com.cloume.shaw.igia.resource.Subscribe;
 import com.cloume.shaw.igia.resource.Subscribe.Item;
 import com.cloume.shaw.igia.resource.Subscribe.SimpleUser;
 import com.cloume.shaw.igia.resource.User;
+import com.cloume.shaw.igia.utils.Const;
 import com.cloume.shaw.igia.utils.RestResponse;
 
 @Controller
@@ -65,7 +66,6 @@ public class SubscribeController extends AbstractController {
 				}
 			}
 			request.setAttribute("details", details);
-			
 			request.setAttribute("subscribe", subscribe);
 			return "mySubscribe";
 		}
@@ -107,6 +107,7 @@ public class SubscribeController extends AbstractController {
 			}
 		}
 		subscribe.setCreateTime(System.currentTimeMillis());
+		subscribe.setState(Const.SUBSCRIBE_HANDLING);
 		//TODO:预约的活动时间暂时为空，待后续增加
 		subscribe.setSubscribeTime(System.currentTimeMillis());
 		

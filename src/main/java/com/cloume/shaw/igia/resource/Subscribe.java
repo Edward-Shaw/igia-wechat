@@ -21,6 +21,9 @@ public class Subscribe {
 	//预约的活动时间
 	private long subscribeTime;
 	
+	//活动预约的状态：已接受、已拒绝、已完成、正在处理
+	private String state;
+	
 	public void addItem(Item item){
 		this.items.add(item);
 	}
@@ -51,6 +54,14 @@ public class Subscribe {
 
 	public void setUser(SimpleUser user) {
 		this.user = user;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public class SimpleUser{

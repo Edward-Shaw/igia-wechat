@@ -1,12 +1,11 @@
 package com.cloume.shaw.igia.utils;
 
 public class Const {
-	
-	//用户类型
-	@Deprecated public static final int TYPE_UNDEFINE = 0;
-	@Deprecated public static final int TYPE_TEACHER = 1;
-	@Deprecated public static final int TYPE_PARENT = 2;
-	@Deprecated public static final int TYPE_STUDENT = 3;
+
+	public static final String SUBSCRIBE_ACCEPTED = "ACCEPTED"; //已接受
+	public static final String SUBSCRIBE_DECLINED = "DECLINED"; //已拒绝
+	public static final String SUBSCRIBE_HANDLING = "HANDLING"; //正在处理
+	public static final String SUBSCRIBE_CLOSED = "CLOSED"; //已完结
 	
 	//微信管理后台的用户分组
 	public static final long GROUP_TEACHER = 100;
