@@ -26,3 +26,6 @@ wx:
 
 captcha:
   storage: default
+
+server:
+  port: 80
