@@ -31,6 +31,17 @@
 	
 	var load = function(){
 		$$.ajax({
+			url: "http://igia.tunnel.qydev.com/igia/register/confirm",
+			method: "GET",
+			success: function(data, status, xhr){
+				if(data == "registered"){
+					myApp.alert("请前往'活动预约'和'会员主页'菜单查看个人信息并预约活动!", "您已经注册过", function(){
+						wx.closeWindow();
+					});
+				}
+			},
+		});
+		$$.ajax({
 		  	  url: "http://igia.tunnel.qydev.com/Igia/jsapisign",
 		  	  method: 'POST',
 		  	  data: JSON.stringify({url: location.href}),

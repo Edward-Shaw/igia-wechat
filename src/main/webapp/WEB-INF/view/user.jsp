@@ -28,7 +28,7 @@
 <script>
 	var myApp = new Framework7();
 	var $$ = Framework7.$;
-	
+
 	var load = function(){
 		$$.ajax({
 		  	  url: "http://jiajiao.tunnel.qydev.com/service-wx/jsapisign",
