@@ -43,6 +43,7 @@ public class SubscribeController extends AbstractController {
 		Query query = new Query(Criteria.where("user.openId").is(openId));
 		Subscribe subscribe = getMongoTemplate().findOne(query, Subscribe.class);
 		if(subscribe != null){
+			request.setAttribute("subscribe", subscribe);
 			String details = "";
 			for(Item item : subscribe.getItems()){
 				switch(item.getCategory()){
