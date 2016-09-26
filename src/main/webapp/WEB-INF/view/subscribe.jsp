@@ -85,13 +85,8 @@
 							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 							        <select name="painting">
 							          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-							          <option value="painting_stage_one">涂鸦(3-4岁)</option>
-							          <option value="painting_stage_two">儿童画1级(4-5岁)</option>
-							          <option value="painting_stage_three">小画家1级(5-6岁)</option>
-							          <option value="painting_stage_four">小画家2级(6-7岁)</option>
-							          <option value="painting_stage_five">小画家3级(7岁以上)</option>
-							          <option value="painting_stage_six">动漫(7岁以上)</option>
-							          <option value="painting_stage_seven">素描(9岁以上)</option>
+							          <option value="painting_stage_one">绘画(4-6岁)</option>
+							          <option value="painting_stage_two">绘画(7-9岁)</option>
 							        </select>
 							        <div class="item-content">
 							          <div class="item-inner">
@@ -105,26 +100,13 @@
 							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 								        <select name="classic">
 								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="classic_basic">基础(大于等于3.5岁)</option>
-								          <option value="classic_progress">提高(6岁以上或有基础)</option>
+								          <option value="classic_stage_one">舞蹈3.5-4.5岁</option>
+								          <option value="classic_stage_two">舞蹈4.5-5.5岁</option>
+								          <option value="classic_stage_three">舞蹈6-7岁</option>
 								        </select>
 								        <div class="item-content">
 								          <div class="item-inner">
-								            <div class="item-title">中国舞</div>
-								            <div class="item-after">点此选择具体活动</div>
-								          </div>
-								        </div>
-							      	</a>
-							      </li>
-							     <li>
-							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-								        <select name="latin">
-								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="five">大于等于5岁</option>
-								        </select>
-								        <div class="item-content">
-								          <div class="item-inner">
-								            <div class="item-title">拉丁舞</div>
+								            <div class="item-title">舞蹈</div>
 								            <div class="item-after">点此选择具体活动</div>
 								          </div>
 								        </div>
@@ -134,8 +116,8 @@
 							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 								        <select name="taekwondo">
 								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="basic">基础(4-6岁)</option>
-								          <option value="progress">提高(7-12岁或有基础)</option>
+								          <option value="basic">跆拳道(4-6岁)</option>
+								          <option value="progress">跆拳道(7-12岁)</option>
 								        </select>
 								        <div class="item-content">
 								          <div class="item-inner">
@@ -149,8 +131,10 @@
 							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 								        <select name="yoga">
 								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="children">儿童瑜伽(3岁以上，父母不参加)</option>
-								          <option value="family">亲子瑜伽(3岁以上，父母一起参加)</option>
+								          <option value="children">儿童瑜伽(6岁以上未成年孩子，免费提供练习资料)</option>
+								          <option value="children">亲子瑜伽(3-6岁宝宝和妈妈一起，免费提供练习资料)</option>
+								          <option value="family">企事业瑜伽(企事业员工团操训练)</option>
+								          <option value="family">成人瑜伽</option>
 								        </select>
 								        <div class="item-content">
 								          <div class="item-inner">
@@ -160,16 +144,32 @@
 								        </div>
 							      	</a>
 							      </li>
+							      <li>
+							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
+								        <select name="yoga">
+								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
+								          <option value="children">汉语拼音3-6岁</option>
+								          <option value="children">少儿英语3岁以上</option>
+								          <option value="family">少儿编程6岁以上</option>
+								        </select>
+								        <div class="item-content">
+								          <div class="item-inner">
+								            <div class="item-title">语言与科技</div>
+								            <div class="item-after">点此选择具体活动</div>
+								          </div>
+								        </div>
+							      	</a>
+							      </li>
 							     <li>
 							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 								        <select name="summer_camp">
 								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="before_school">学龄前(3-5岁)</option>
-								          <option value="school">学龄(6岁以上)</option>
+								          <option value="before_school">暑假集训(绘画、舞蹈、跆拳道、语言与科技活动集中训练)</option>
+								          <option value="school">寒假集训(绘画、舞蹈、跆拳道、语言与科技活动集中训练)</option>
 								        </select>
 								        <div class="item-content">
 								          <div class="item-inner">
-								            <div class="item-title">夏令营</div>
+								            <div class="item-title">寒暑假集训</div>
 								            <div class="item-after">点此选择具体活动</div>
 								          </div>
 								        </div>
