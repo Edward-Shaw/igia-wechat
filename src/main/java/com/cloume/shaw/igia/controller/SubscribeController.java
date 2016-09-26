@@ -1,5 +1,6 @@
 package com.cloume.shaw.igia.controller;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -110,6 +111,7 @@ public class SubscribeController extends AbstractController {
 		subscribe.setState(Const.SUBSCRIBE_HANDLING);
 		//TODO:预约的活动时间暂时为空，待后续增加
 		subscribe.setSubscribeTime(System.currentTimeMillis());
+		subscribe.setCode(generateSubscribeCode());
 		
 		getMongoTemplate().insert(subscribe, "subscribe");
 		
@@ -118,5 +120,20 @@ public class SubscribeController extends AbstractController {
 		request.setAttribute("details", details);
 		
 		return RestResponse.good(subscribe);
+	}
+	
+	private String generateSubscribeCode(){
+		Calendar now = Calendar.getInstance();
+		String time = (now.get(Calendar.YEAR) + "").substring(2) + String.format("%02d", now.get(Calendar.MONTH) + 1);
+		final String prefix = "IGIA-" + time;
+		final String pattern = prefix + "-\\d{1,5}";
+		
+		String code = "";
+		synchronized(this){
+			long count = getMongoTemplate().count(Query.query(Criteria.where("code").regex(pattern).and("state").ne(Const.STATE_DELETED)), Subscribe.class, "subscribe") + 1;
+			code = prefix + "-" + count;
+		}
+		
+		return code;
 	}
 }

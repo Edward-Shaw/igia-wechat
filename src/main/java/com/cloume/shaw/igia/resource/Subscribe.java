@@ -2,12 +2,20 @@ package com.cloume.shaw.igia.resource;
 
 import java.util.ArrayList;
 
+import org.springframework.data.annotation.Id;
+
 /**
  * 预约记录，可能包含多条活动预约信息
  * @author yxiao_000
  *
  */
 public class Subscribe {
+	
+	@Id
+	private String id;
+	
+	//预约活动的自定义编号
+	private String code;
 	
 	//预约用户的基本信息
 	private SimpleUser user;
@@ -62,6 +70,14 @@ public class Subscribe {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public class SimpleUser{
