@@ -94,7 +94,7 @@ public class UserController extends AbstractController {
 	public RestResponse<User> register(HttpServletRequest request,
 			@RequestBody Map<String, Object> body
 			){
-		final String[] fields = {"name", "mobile", "password", "address"};
+		final String[] fields = {"name", "mobile", "password", "address", "email"};
 		if(!verify(body, Arrays.asList(fields))){
 			return RestResponse.bad(404, String.format("properties %s can not missing", StringUtils.join(fields, ',')), null);
 		}
@@ -112,6 +112,7 @@ public class UserController extends AbstractController {
 		update.set("banned", "true");
 		update.set("mobile", body.get("mobile"));
 		update.set("address", body.get("address"));
+		update.set("email", body.get("email"));
 		int res = getMongoTemplate().updateMulti(new Query(Criteria.where("_id").is(openId)), update, User.class).getN();
 		if(res != 1){
 			return new RestResponse<User>(-3, "信息登记失败,此用户不存在,请退出公众号重新进入!", userSession);
