@@ -32,6 +32,9 @@ public class Subscribe {
 	//活动预约的状态：已接受、已拒绝、已完成、正在处理
 	private String state;
 	
+	//预约活动班级
+	private String subscribeClass;
+	
 	public void addItem(Item item){
 		this.items.add(item);
 	}
@@ -78,6 +81,14 @@ public class Subscribe {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public String getSubscribeClass() {
+		return subscribeClass;
+	}
+
+	public void setSubscribeClass(String subscribeClass) {
+		this.subscribeClass = subscribeClass;
 	}
 
 	public class SimpleUser{

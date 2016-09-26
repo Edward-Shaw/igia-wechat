@@ -141,7 +141,7 @@
 												已预约：
 											</div>
 											<div class="item-input">
-												<span style="color: red">${details}</span>
+												<span style="color: red">${subscribe_details}</span>
 											</div>
 										</div>
 									</div>
@@ -153,7 +153,7 @@
 												预约状态：
 											</div>
 											<div class="item-input">
-												<span style="color: red">${subscribe.state}</span>
+												<span style="color: red">${subscribe_state}</span>
 											</div>
 										</div>
 									</div>
@@ -165,7 +165,7 @@
 												预约时间：
 											</div>
 											<div class="item-input">
-												<span style="color: red">${subscribe.createTime}</span>
+												<span style="color: red">${subscribe_time}</span>
 											</div>
 										</div>
 									</div>

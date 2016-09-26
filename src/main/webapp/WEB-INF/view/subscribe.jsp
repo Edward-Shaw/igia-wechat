@@ -116,8 +116,8 @@
 							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 								        <select name="taekwondo">
 								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="basic">跆拳道(4-6岁)</option>
-								          <option value="progress">跆拳道(7-12岁)</option>
+								          <option value="taekwondo_stage_one">跆拳道(4-6岁)</option>
+								          <option value="taekwondo_stage_two">跆拳道(7-12岁)</option>
 								        </select>
 								        <div class="item-content">
 								          <div class="item-inner">
@@ -131,10 +131,10 @@
 							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 								        <select name="yoga">
 								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="children">儿童瑜伽(6岁以上未成年孩子，免费提供练习资料)</option>
-								          <option value="children">亲子瑜伽(3-6岁宝宝和妈妈一起，免费提供练习资料)</option>
-								          <option value="family">企事业瑜伽(企事业员工团操训练)</option>
-								          <option value="family">成人瑜伽</option>
+								          <option value="yoga_stage_one">儿童瑜伽(6岁以上未成年孩子，免费提供练习资料)</option>
+								          <option value="yoga_stage_two">亲子瑜伽(3-6岁宝宝和妈妈一起，免费提供练习资料)</option>
+								          <option value="yoga_stage_three">企事业瑜伽(企事业员工团操训练)</option>
+								          <option value="yoga_stage_four">成人瑜伽</option>
 								        </select>
 								        <div class="item-content">
 								          <div class="item-inner">
@@ -146,11 +146,11 @@
 							      </li>
 							      <li>
 							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-								        <select name="yoga">
+								        <select name="tech">
 								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="children">汉语拼音3-6岁</option>
-								          <option value="children">少儿英语3岁以上</option>
-								          <option value="family">少儿编程6岁以上</option>
+								          <option value="chinese">汉语拼音3-6岁</option>
+								          <option value="english">少儿英语3岁以上</option>
+								          <option value="programing">少儿编程6岁以上</option>
 								        </select>
 								        <div class="item-content">
 								          <div class="item-inner">
@@ -162,10 +162,10 @@
 							      </li>
 							     <li>
 							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-								        <select name="summer_camp">
+								        <select name="camp">
 								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="before_school">暑假集训(绘画、舞蹈、跆拳道、语言与科技活动集中训练)</option>
-								          <option value="school">寒假集训(绘画、舞蹈、跆拳道、语言与科技活动集中训练)</option>
+								          <option value="summer_camp">暑假集训(绘画、舞蹈、跆拳道、语言与科技活动集中训练)</option>
+								          <option value="automn_camp">寒假集训(绘画、舞蹈、跆拳道、语言与科技活动集中训练)</option>
 								        </select>
 								        <div class="item-content">
 								          <div class="item-inner">
@@ -175,6 +175,7 @@
 								        </div>
 							      	</a>
 							      </li>
+							      <br>
 							      <li>
 							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 								        <select name="activity_class">
@@ -208,7 +209,7 @@
 	<script>
 		var mainView = myApp.addView('.view-main');
 		$$('.form-to-json').on('click', function(){
-			wx.closeWindow();
+			//wx.closeWindow();
 		});
 		
 		var mainView = myApp.addView('.view-main');
@@ -222,7 +223,7 @@
 				if(formData[item] == "default"){
 					count++;
 				}else if(formData[item] == "time_default"){
-					time_selected = true;
+					time_selected = false;
 				}
 			}
 

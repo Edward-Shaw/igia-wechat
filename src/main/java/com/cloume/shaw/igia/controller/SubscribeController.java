@@ -1,6 +1,8 @@
 package com.cloume.shaw.igia.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -48,10 +50,10 @@ public class SubscribeController extends AbstractController {
 					details += "绘画 ";
 					break;
 				case "classic":
-					details += "中国舞 ";
+					details += "舞蹈 ";
 					break;
-				case "latin":
-					details += "拉丁  ";
+				case "tech":
+					details += "语言与科技  ";
 					break;
 				case "taekwondo":
 					details += "跆拳道 ";
@@ -59,24 +61,62 @@ public class SubscribeController extends AbstractController {
 				case "yoga":
 					details += "瑜伽 ";
 					break;
-				case "summer_camp":
-					details += "夏令营 ";
+				case "camp":
+					details += "寒暑假集训 ";
 					break;
 				default:
 					details += "";
 				}
 			}
-			request.setAttribute("details", details);
-			request.setAttribute("subscribe", subscribe);
+			
+			switch(subscribe.getSubscribeClass()){
+			case "one":
+				details += " 一班";
+				break;
+			case "two":
+				details += " 二班";
+				break;
+			case "three":
+				details += " 三班";
+				break;
+			case "four":
+				details += " 四班";
+				break;
+			default:
+				details += " 未分班";
+				break;
+			}
+			
+			request.setAttribute("subscribe_details", details);
+			String state = "正在处理";
+			switch(subscribe.getState()){
+			case Const.SUBSCRIBE_ACCEPTED:
+				state = "已接受";
+				break;
+			case Const.SUBSCRIBE_CLOSED:
+				state = "已关闭";
+				break;
+			case Const.SUBSCRIBE_DECLINED:
+				state = "已拒绝";
+				break;
+			case Const.SUBSCRIBE_HANDLING:
+				state = "正在处理";
+				break;
+			default:
+				state = "正在处理";
+			}
+			request.setAttribute("subscribe_state", state);
+			Date date = new Date(subscribe.getCreateTime());
+			SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			request.setAttribute("subscribe_time", dateFormatter.format(date));
+			User userMongo = getMongoTemplate().findById(openId, User.class);
+			if(userMongo == null || !userMongo.isBanned()){
+				return "register";
+			}
+			
+			request.setAttribute("user", userMongo);
 			return "mySubscribe";
 		}
-		
-		User userMongo = getMongoTemplate().findById(openId, User.class);
-		if(userMongo == null || !userMongo.isBanned()){
-			return "register";
-		}
-		
-		request.setAttribute("user", userMongo);
 		
 		return "subscribe";
 	}
@@ -111,6 +151,7 @@ public class SubscribeController extends AbstractController {
 		subscribe.setState(Const.SUBSCRIBE_HANDLING);
 		//TODO:预约的活动时间暂时为空，待后续增加
 		subscribe.setSubscribeTime(System.currentTimeMillis());
+		subscribe.setSubscribeClass(body.get("activity_class").toString());
 		subscribe.setCode(generateSubscribeCode());
 		
 		getMongoTemplate().insert(subscribe, "subscribe");
