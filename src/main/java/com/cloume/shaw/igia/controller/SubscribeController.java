@@ -71,20 +71,29 @@ public class SubscribeController extends AbstractController {
 			}
 			
 			switch(subscribe.getSubscribeClass()){
-			case "one":
-				details += " 一班";
+			case "monday":
+				details += " 周一";
 				break;
-			case "two":
-				details += " 二班";
+			case "tuesday":
+				details += " 周二";
 				break;
-			case "three":
-				details += " 三班";
+			case "wednesday":
+				details += " 周三";
 				break;
-			case "four":
-				details += " 四班";
+			case "thursday":
+				details += " 周四";
+				break;
+			case "friday":
+				details += " 周五";
+				break;
+			case "saturday":
+				details += " 周六";
+				break;
+			case "sunday":
+				details += " 周日";
 				break;
 			default:
-				details += " 未分班";
+				details += " 未选择时间";
 				break;
 			}
 			

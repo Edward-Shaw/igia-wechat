@@ -179,16 +179,19 @@
 							      <li>
 							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 								        <select name="activity_class">
-								          <option value="time_default" selected>请选择一个活动班</option>
-								          <option value="one">一班</option>
-								          <option value="two">二班</option>
-								          <option value="two">三班</option>
-								          <option value="two">四班</option>
+								          <option value="time_default" selected>请选择一个活动时间</option>
+								          <option value="monday">周一</option>
+								          <option value="tuesday">周二</option>
+								          <option value="wednesday">周三</option>
+								          <option value="thursday">周四</option>
+								          <option value="friday">周五</option>
+								          <option value="saturday">周六</option>
+								          <option value="sunday">周日</option>
 								        </select>
 								        <div class="item-content">
 								          <div class="item-inner">
-								            <div class="item-title">活动班</div>
-								            <div class="item-after">点此选择一个活动班(预约时间)</div>
+								            <div class="item-title">活动时间</div>
+								            <div class="item-after">点此选择活动时间</div>
 								          </div>
 								        </div>
 							      	</a>
@@ -218,7 +221,7 @@
 			console.log(formData);
 			
 			var count = 0;
-			var time_selected = false;
+			var time_selected = true;
 			for(item in formData){
 				if(formData[item] == "default"){
 					count++;
