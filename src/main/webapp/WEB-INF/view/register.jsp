@@ -42,7 +42,7 @@
 			},
 		});
 		$$.ajax({
-		  	  url: "http://igia.tunnel.qydev.com/Igia/jsapisign",
+		  	  url: "http://igia.tunnel.qydev.com/igia/jsapisign",
 		  	  method: 'POST',
 		  	  data: JSON.stringify({url: location.href}),
 		  	  processData: false,

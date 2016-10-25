@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cloume.shaw.igia.resource.Subscribe;
 import com.cloume.shaw.igia.resource.Subscribe.Item;
@@ -138,6 +139,7 @@ public class SubscribeController extends AbstractController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST)
+	@ResponseBody
 	public RestResponse<Subscribe> submitSubscribeInfo(HttpServletRequest request, 
 			@RequestBody Map<String, Object> body){
 		
