@@ -1,5 +1,6 @@
 package com.cloume.shaw.igia.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
@@ -21,6 +22,7 @@ import com.cloume.shaw.igia.common.resource.Subscribe;
 import com.cloume.shaw.igia.common.resource.Subscribe.Item;
 import com.cloume.shaw.igia.common.resource.User;
 import com.cloume.shaw.igia.common.utils.RestResponse;
+import com.cloume.shaw.igia.common.utils.Const;
 
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpService;
@@ -58,10 +60,10 @@ public class UserController extends AbstractController {
 					details += "绘画 ";
 					break;
 				case "classic":
-					details += "中国舞 ";
+					details += "舞蹈 ";
 					break;
-				case "latin":
-					details += "拉丁  ";
+				case "tech":
+					details += "语言与科技  ";
 					break;
 				case "taekwondo":
 					details += "跆拳道 ";
@@ -69,15 +71,63 @@ public class UserController extends AbstractController {
 				case "yoga":
 					details += "瑜伽 ";
 					break;
-				case "summer_camp":
-					details += "夏令营 ";
+				case "camp":
+					details += "寒暑假集训 ";
 					break;
 				default:
 					details += "";
 				}
 			}
-			request.setAttribute("details", details);
-			request.setAttribute("subscribe", subscribe);
+
+			switch(subscribe.getSubscribeClass()){
+			case "monday":
+				details += " 周一";
+				break;
+			case "tuesday":
+				details += " 周二";
+				break;
+			case "wednesday":
+				details += " 周三";
+				break;
+			case "thursday":
+				details += " 周四";
+				break;
+			case "friday":
+				details += " 周五";
+				break;
+			case "saturday":
+				details += " 周六";
+				break;
+			case "sunday":
+				details += " 周日";
+				break;
+			default:
+				details += " 未选择时间";
+				break;
+			}
+			
+			request.setAttribute("subscribe_details", details);
+			String state = "正在处理";
+			switch(subscribe.getState()){
+			case Const.SUBSCRIBE_ACCEPTED:
+				state = "已接受";
+				break;
+			case Const.SUBSCRIBE_CLOSED:
+				state = "已关闭";
+				break;
+			case Const.SUBSCRIBE_DECLINED:
+				state = "已拒绝";
+				break;
+			case Const.SUBSCRIBE_HANDLING:
+				state = "正在处理";
+				break;
+			default:
+				state = "正在处理";
+			}
+			request.setAttribute("subscribe_state", state);
+			Date date = new Date(subscribe.getCreateTime());
+			SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			request.setAttribute("subscribe_time", dateFormatter.format(date));
 		}
 		
 		return "user";
@@ -93,7 +143,7 @@ public class UserController extends AbstractController {
 	public RestResponse<User> register(HttpServletRequest request,
 			@RequestBody Map<String, Object> body
 			){
-		final String[] fields = {"name", "mobile", "password", "address"};
+		final String[] fields = {"name", "mobile", "password", "address", "email"};
 		if(!verify(body, Arrays.asList(fields))){
 			return RestResponse.bad(404, String.format("properties %s can not missing", StringUtils.join(fields, ',')), null);
 		}
@@ -111,6 +161,7 @@ public class UserController extends AbstractController {
 		update.set("banned", "true");
 		update.set("mobile", body.get("mobile"));
 		update.set("address", body.get("address"));
+		update.set("email", body.get("email"));
 		int res = getMongoTemplate().updateMulti(new Query(Criteria.where("_id").is(openId)), update, User.class).getN();
 		if(res != 1){
 			return new RestResponse<User>(-3, "信息登记失败,此用户不存在,请退出公众号重新进入!", userSession);

@@ -85,8 +85,8 @@
 						  <p>客户名：${subscribe.user.username}</p>
 						  <p>联系方式：${subscribe.user.mobile}</p>
 						  <p>联系地址：${subscribe.user.address}</p>
-						  <p>预约提交时间：${subscribe.createTime}</p>
-						  <p>预约活动：${details}</p>
+						  <p>预约提交时间：${subscribe_time}</p>
+						  <p>预约活动：${subscribe_details}</p>
 						  <div class="list-block-label" style="margin-left:-20px;">您的活动已预约成功，我们将尽快和您联系。</div>
 						</div>
 						<p style="margin-left: 5%">

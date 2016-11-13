@@ -1,5 +1,8 @@
 package com.cloume.shaw.igia.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cloume.shaw.igia.common.resource.Subscribe;
 import com.cloume.shaw.igia.common.resource.Subscribe.Item;
@@ -40,6 +44,7 @@ public class SubscribeController extends AbstractController {
 		Query query = new Query(Criteria.where("user.openId").is(openId));
 		Subscribe subscribe = getMongoTemplate().findOne(query, Subscribe.class);
 		if(subscribe != null){
+			request.setAttribute("subscribe", subscribe);
 			String details = "";
 			for(Item item : subscribe.getItems()){
 				switch(item.getCategory()){
@@ -47,10 +52,10 @@ public class SubscribeController extends AbstractController {
 					details += "绘画 ";
 					break;
 				case "classic":
-					details += "中国舞 ";
+					details += "舞蹈 ";
 					break;
-				case "latin":
-					details += "拉丁  ";
+				case "tech":
+					details += "语言与科技  ";
 					break;
 				case "taekwondo":
 					details += "跆拳道 ";
@@ -58,24 +63,71 @@ public class SubscribeController extends AbstractController {
 				case "yoga":
 					details += "瑜伽 ";
 					break;
-				case "summer_camp":
-					details += "夏令营 ";
+				case "camp":
+					details += "寒暑假集训 ";
 					break;
 				default:
 					details += "";
 				}
 			}
-			request.setAttribute("details", details);
-			request.setAttribute("subscribe", subscribe);
+			
+			switch(subscribe.getSubscribeClass()){
+			case "monday":
+				details += " 周一";
+				break;
+			case "tuesday":
+				details += " 周二";
+				break;
+			case "wednesday":
+				details += " 周三";
+				break;
+			case "thursday":
+				details += " 周四";
+				break;
+			case "friday":
+				details += " 周五";
+				break;
+			case "saturday":
+				details += " 周六";
+				break;
+			case "sunday":
+				details += " 周日";
+				break;
+			default:
+				details += " 未选择时间";
+				break;
+			}
+			
+			request.setAttribute("subscribe_details", details);
+			String state = "正在处理";
+			switch(subscribe.getState()){
+			case Const.SUBSCRIBE_ACCEPTED:
+				state = "已接受";
+				break;
+			case Const.SUBSCRIBE_CLOSED:
+				state = "已关闭";
+				break;
+			case Const.SUBSCRIBE_DECLINED:
+				state = "已拒绝";
+				break;
+			case Const.SUBSCRIBE_HANDLING:
+				state = "正在处理";
+				break;
+			default:
+				state = "正在处理";
+			}
+			request.setAttribute("subscribe_state", state);
+			Date date = new Date(subscribe.getCreateTime());
+			SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			request.setAttribute("subscribe_time", dateFormatter.format(date));
+			User userMongo = getMongoTemplate().findById(openId, User.class);
+			if(userMongo == null || !userMongo.isBanned()){
+				return "register";
+			}
+			
+			request.setAttribute("user", userMongo);
 			return "mySubscribe";
 		}
-		
-		User userMongo = getMongoTemplate().findById(openId, User.class);
-		if(userMongo == null || !userMongo.isBanned()){
-			return "register";
-		}
-		
-		request.setAttribute("user", userMongo);
 		
 		return "subscribe";
 	}
@@ -87,6 +139,7 @@ public class SubscribeController extends AbstractController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST)
+	@ResponseBody
 	public RestResponse<Subscribe> submitSubscribeInfo(HttpServletRequest request, 
 			@RequestBody Map<String, Object> body){
 		
@@ -110,6 +163,8 @@ public class SubscribeController extends AbstractController {
 		subscribe.setState(Const.SUBSCRIBE_HANDLING);
 		//TODO:预约的活动时间暂时为空，待后续增加
 		subscribe.setSubscribeTime(System.currentTimeMillis());
+		subscribe.setSubscribeClass(body.get("activity_class").toString());
+		subscribe.setCode(generateSubscribeCode());
 		
 		getMongoTemplate().insert(subscribe, "subscribe");
 		
@@ -118,5 +173,20 @@ public class SubscribeController extends AbstractController {
 		request.setAttribute("details", details);
 		
 		return RestResponse.good(subscribe);
+	}
+	
+	private String generateSubscribeCode(){
+		Calendar now = Calendar.getInstance();
+		String time = (now.get(Calendar.YEAR) + "").substring(2) + String.format("%02d", now.get(Calendar.MONTH) + 1);
+		final String prefix = "IGIA-" + time;
+		final String pattern = prefix + "-\\d{1,5}";
+		
+		String code = "";
+		synchronized(this){
+			long count = getMongoTemplate().count(Query.query(Criteria.where("code").regex(pattern).and("state").ne(Const.STATE_DELETED)), Subscribe.class, "subscribe") + 1;
+			code = prefix + "-" + count;
+		}
+		
+		return code;
 	}
 }

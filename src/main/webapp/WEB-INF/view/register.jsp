@@ -42,7 +42,7 @@
 			},
 		});
 		$$.ajax({
-		  	  url: "http://igia.tunnel.qydev.com/Igia/jsapisign",
+		  	  url: "http://igia.tunnel.qydev.com/igia/jsapisign",
 		  	  method: 'POST',
 		  	  data: JSON.stringify({url: location.href}),
 		  	  processData: false,
@@ -107,10 +107,22 @@
 									<div class="item-content">
 										<div class="item-inner">
 											<div class="item-title label">
+												邮箱<span style="color: red">*</span>
+											</div>
+											<div class="item-input">
+												<input type="email" name="email" placeholder="用于接收练习资料" />
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">
 												地址<span style="color: red">*</span>
 											</div>
 											<div class="item-input">
-												<input type="text" name="address" placeholder="请填写您的住址">
+												<input type="text" name="address" placeholder="小区名称或者单位名称">
 											</div>
 										</div>
 									</div>
@@ -128,29 +140,6 @@
 									</div>
 								</li>
 							</ul>
-							<!-- 
-							<div class="list-block">
-						         <div class="row">
-						           <div class="col-66">
-						               <ul>
-						                <li>
-						                   <div class="item-content">
-						                     <div class="item-inner">
-						                        <div class="item-title label">验证码<span style="color:red">*</span></div>
-						                        <div class="item-input">
-						                          <input type="text" name="code" placeholder="请填写验证码">
-						                        </div>
-						                     </div>
-						                   </div>
-						                </li>
-						               </ul> 
-						           </div>
-						           <div class="col-33" >
-						             <img src="<c:url value="/img/${openId}.jpg"/>" width="80px" height="42px">
-						           </div>
-						         </div>
-						       </div>
-						        -->
 						</form>
 
 						<p style="margin-left: 5%">
@@ -214,6 +203,10 @@
 			if(formData["address"] == ''){
 				myApp.alert("请输入您的住址", '住址不能为空!');
 				return false;
+			}
+			if(formData["email"] == ''){
+				myApp.alert("请输入您的邮箱地址，便于接收练习资料!", '邮箱地址不能为空!');
+				return true;
 			}
 			if(formData["password"] == ''){
 				myApp.alert("请输入您的密码", '密码不能为空!');

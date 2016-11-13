@@ -96,6 +96,18 @@
 									<div class="item-content">
 										<div class="item-inner">
 											<div class="item-title label">
+												邮箱地址：
+											</div>
+											<div class="item-input">
+												<span style="color: red">${user.email}</span>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">
 												地址：
 											</div>
 											<div class="item-input">
@@ -129,7 +141,7 @@
 												已预约：
 											</div>
 											<div class="item-input">
-												<span style="color: red">${details}</span>
+												<span style="color: red">${subscribe_details}</span>
 											</div>
 										</div>
 									</div>
@@ -141,7 +153,7 @@
 												预约状态：
 											</div>
 											<div class="item-input">
-												<span style="color: red">${subscribe.state}</span>
+												<span style="color: red">${subscribe_state}</span>
 											</div>
 										</div>
 									</div>
@@ -153,7 +165,7 @@
 												预约时间：
 											</div>
 											<div class="item-input">
-												<span style="color: red">${subscribe.createTime}</span>
+												<span style="color: red">${subscribe_time}</span>
 											</div>
 										</div>
 									</div>
