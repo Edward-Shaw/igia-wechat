@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.cloume.shaw.igia.resource.Subscribe;
-import com.cloume.shaw.igia.resource.Subscribe.Item;
-import com.cloume.shaw.igia.resource.Subscribe.SimpleUser;
-import com.cloume.shaw.igia.resource.User;
-import com.cloume.shaw.igia.utils.Const;
-import com.cloume.shaw.igia.utils.RestResponse;
+import com.cloume.shaw.igia.common.resource.Subscribe;
+import com.cloume.shaw.igia.common.resource.Subscribe.Item;
+import com.cloume.shaw.igia.common.resource.Subscribe.SimpleUser;
+import com.cloume.shaw.igia.common.resource.User;
+import com.cloume.shaw.igia.common.utils.Const;
+import com.cloume.shaw.igia.common.utils.RestResponse;
 
 @Controller
 @RequestMapping(value = "/subscribe")

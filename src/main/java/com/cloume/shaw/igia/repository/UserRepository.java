@@ -2,7 +2,7 @@ package com.cloume.shaw.igia.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.cloume.shaw.igia.resource.IgiaUser;
+import com.cloume.shaw.igia.common.resource.User;
 
-public interface UserRepository extends MongoRepository<IgiaUser, String> {
+public interface UserRepository extends MongoRepository<User, String> {
 }

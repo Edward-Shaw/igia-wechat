@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cloume.shaw.igia.resource.User;
-import com.cloume.shaw.igia.utils.RestResponse;
+import com.cloume.shaw.igia.common.resource.User;
 
 @Controller
 @RequestMapping(value = "/register")

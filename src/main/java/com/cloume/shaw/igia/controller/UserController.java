@@ -17,11 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cloume.shaw.igia.resource.Subscribe;
-import com.cloume.shaw.igia.resource.User;
-import com.cloume.shaw.igia.resource.Subscribe.Item;
-import com.cloume.shaw.igia.utils.RestResponse;
-import com.cloume.shaw.igia.utils.Updater;
+import com.cloume.shaw.igia.common.resource.Subscribe;
+import com.cloume.shaw.igia.common.resource.Subscribe.Item;
+import com.cloume.shaw.igia.common.resource.User;
+import com.cloume.shaw.igia.common.utils.RestResponse;
 
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpService;

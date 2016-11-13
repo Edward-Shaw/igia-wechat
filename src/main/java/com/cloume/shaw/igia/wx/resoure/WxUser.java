@@ -3,7 +3,7 @@ package com.cloume.shaw.igia.wx.resoure;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import com.cloume.shaw.igia.utils.Cloner;
+import com.cloume.shaw.igia.common.utils.Cloner;
 
 import me.chanjar.weixin.mp.bean.result.WxMpUser;
 

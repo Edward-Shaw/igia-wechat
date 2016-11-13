@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cloume.shaw.igia.resource.User;
+import com.cloume.shaw.igia.common.resource.User;
 
 @Controller
 public class MainController extends AbstractController {
