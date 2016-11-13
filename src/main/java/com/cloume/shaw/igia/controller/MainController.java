@@ -1,6 +1,7 @@
 package com.cloume.shaw.igia.controller;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cloume.shaw.igia.common.resource.User;
+import com.cloume.shaw.igia.common.utils.Const;
 
 @Controller
 public class MainController extends AbstractController {
@@ -115,6 +117,7 @@ public class MainController extends AbstractController {
 			user.setProvince(wxMpUser.getProvince());
 			user.setCreatedTime(System.currentTimeMillis());
 			user.setBanned(false);
+			user.setCode(generateUserCode());
 			getMongoTemplate().save(user, "user");
 		}else if(user.getAvatar() == null || user.getAvatar().isEmpty()){
 			user.setAvatar(wxMpUser.getHeadImgUrl());
@@ -185,5 +188,27 @@ public class MainController extends AbstractController {
 			}
 			return;
 		}
+	}
+	
+	/**
+	 * code = YYMM(年月)-用户数量序号(位数根据数据库中实际用户数量进行动态变更)
+	 * 
+	 * @return
+	 */
+	private String generateUserCode() {
+		Calendar now = Calendar.getInstance();
+		String time = (now.get(Calendar.YEAR) + "").substring(2) + String.format("%02d", now.get(Calendar.MONTH) + 1);
+		final String prefix = time;
+		final String pattern = prefix + "-\\d{1,5}";
+
+		String code = "";
+		synchronized (this) {
+			long count = getMongoTemplate().count(
+					Query.query(Criteria.where("code").regex(pattern).and("state").ne(Const.STATE_DELETED)), User.class,
+					"order") + 1;
+			code = prefix + "-" + count;
+		}
+
+		return code;
 	}
 }
