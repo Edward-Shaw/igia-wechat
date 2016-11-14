@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.cloume.shaw.igia.common.resource.Subscribe;
 import com.cloume.shaw.igia.common.resource.Subscribe.Item;
 import com.cloume.shaw.igia.common.resource.User;
-import com.cloume.shaw.igia.common.utils.RestResponse;
+import com.cloume.shaw.igia.common.rest.RestResponse;
 import com.cloume.shaw.igia.common.utils.Const;
 
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;

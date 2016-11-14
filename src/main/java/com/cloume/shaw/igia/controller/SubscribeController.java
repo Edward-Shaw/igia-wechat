@@ -21,8 +21,8 @@ import com.cloume.shaw.igia.common.resource.Subscribe;
 import com.cloume.shaw.igia.common.resource.Subscribe.Item;
 import com.cloume.shaw.igia.common.resource.Subscribe.SimpleUser;
 import com.cloume.shaw.igia.common.resource.User;
+import com.cloume.shaw.igia.common.rest.RestResponse;
 import com.cloume.shaw.igia.common.utils.Const;
-import com.cloume.shaw.igia.common.utils.RestResponse;
 
 @Controller
 @RequestMapping(value = "/subscribe")
