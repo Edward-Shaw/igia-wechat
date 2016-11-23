@@ -8,5 +8,17 @@ import com.cloume.shaw.igia.common.resource.Course;
 
 public interface CourseRepository extends MongoRepository<Course, String> {
 	
+	/**
+	 * find course by state.
+	 * @param state
+	 * @return
+	 */
 	List<Course> findByState(String state);
+	
+	/**
+	 * find course by code.
+	 * @param code
+	 * @return
+	 */
+	Course findByCode(String code);
 }

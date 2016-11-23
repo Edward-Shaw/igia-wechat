@@ -81,101 +81,6 @@
 						<form id="subscribe-form" class="list-block store-data">
 							<div class="list-block">
 							  <ul id="subscribe-ul">
-							    <li>
-							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-							        <select name="painting">
-							          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-							          <option value="painting_stage_one">绘画(4-6岁)</option>
-							          <option value="painting_stage_two">绘画(7-9岁)</option>
-							        </select>
-							        <div class="item-content">
-							          <div class="item-inner">
-							            <div class="item-title">绘画</div>
-							            <div class="item-after">点此选择具体活动</div>
-							          </div>
-							        </div>
-							      </a>
-							    </li>
-							    <li>
-							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-								        <select name="classic">
-								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="classic_stage_one">舞蹈3.5-4.5岁</option>
-								          <option value="classic_stage_two">舞蹈4.5-5.5岁</option>
-								          <option value="classic_stage_three">舞蹈6-7岁</option>
-								        </select>
-								        <div class="item-content">
-								          <div class="item-inner">
-								            <div class="item-title">舞蹈</div>
-								            <div class="item-after">点此选择具体活动</div>
-								          </div>
-								        </div>
-							      	</a>
-							      </li>
-							     <li>
-							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-								        <select name="taekwondo">
-								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="taekwondo_stage_one">跆拳道(4-6岁)</option>
-								          <option value="taekwondo_stage_two">跆拳道(7-12岁)</option>
-								        </select>
-								        <div class="item-content">
-								          <div class="item-inner">
-								            <div class="item-title">跆拳道</div>
-								            <div class="item-after">点此选择具体活动</div>
-								          </div>
-								        </div>
-							      	</a>
-							      </li>
-							     <li>
-							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-								        <select name="yoga">
-								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="yoga_stage_one">儿童瑜伽(6岁以上未成年孩子，免费提供练习资料)</option>
-								          <option value="yoga_stage_two">亲子瑜伽(3-6岁宝宝和妈妈一起，免费提供练习资料)</option>
-								          <option value="yoga_stage_three">企事业瑜伽(企事业员工团操训练)</option>
-								          <option value="yoga_stage_four">成人瑜伽</option>
-								        </select>
-								        <div class="item-content">
-								          <div class="item-inner">
-								            <div class="item-title">瑜伽</div>
-								            <div class="item-after">点此选择具体活动</div>
-								          </div>
-								        </div>
-							      	</a>
-							      </li>
-							      <li>
-							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-								        <select name="tech">
-								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="chinese">汉语拼音3-6岁</option>
-								          <option value="english">少儿英语3岁以上</option>
-								          <option value="programing">少儿编程6岁以上</option>
-								        </select>
-								        <div class="item-content">
-								          <div class="item-inner">
-								            <div class="item-title">语言与科技</div>
-								            <div class="item-after">点此选择具体活动</div>
-								          </div>
-								        </div>
-							      	</a>
-							      </li>
-							     <li>
-							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
-								        <select name="camp">
-								          <option value="default" selected>请选择一项具体活动并返回提交预约</option>
-								          <option value="summer_camp">暑假集训(绘画、舞蹈、跆拳道、语言与科技活动集中训练)</option>
-								          <option value="automn_camp">寒假集训(绘画、舞蹈、跆拳道、语言与科技活动集中训练)</option>
-								        </select>
-								        <div class="item-content">
-								          <div class="item-inner">
-								            <div class="item-title">寒暑假集训</div>
-								            <div class="item-after">点此选择具体活动</div>
-								          </div>
-								        </div>
-							      	</a>
-							      </li>
-							      <br>
 							      <li>
 							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 								        <select name="activity_class">
@@ -258,7 +163,7 @@
 					time_selected = false;
 				}
 			}
-
+			/*
 			if(count < 4){
 				myApp.alert("一次只能最多只能同时预约2个活动", '预约超过上限!');
 				return false;
@@ -266,7 +171,7 @@
 				myApp.alert("请进入活动列表页面选择一个具体活动进行预约", '没有预约!');
 				return false;
 			}
-			
+			*/
 			if(!time_selected){
 				myApp.alert("请前往通知公告栏的'作息更新'查看活动班信息", "请选择一个活动班");
 				return false;

@@ -3,6 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <head>
 <!-- Required meta tags-->
 <c:set var="cp" scope="session"
@@ -83,7 +85,10 @@
 						  <p>联系方式：${subscribe.user.mobile}</p>
 						  <p>联系地址：${subscribe.user.address}</p>
 						  <p>预约提交时间：${subscribe_time}</p>
-						  <p>预约活动：${subscribe_details}</p>
+						  <p>预约活动：</p>
+						  <c:forEach var="course" items="${subscribe_courses}">	
+						  	  <center><p>${course.classification}：${course.name}</p></center>
+						  </c:forEach>
 						  <div class="list-block-label" style="margin-left:-20px;">您的活动已预约成功，我们将尽快和您联系。</div>
 						</div>
 						<p style="margin-left: 5%">
