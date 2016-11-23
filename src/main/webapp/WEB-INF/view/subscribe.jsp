@@ -68,7 +68,7 @@
 					  </div>
 				</div>
 				
-				<div data-page="teacher" class="page">
+				<div data-page="subscribe" class="page">
 					<div class="navbar">
 		              <div class="navbar-inner">
 		                <div class="left"></div>
@@ -80,7 +80,7 @@
 						<div class="content-block-title"></div>
 						<form id="subscribe-form" class="list-block store-data">
 							<div class="list-block">
-							  <ul>
+							  <ul id="subscribe-ul">
 							    <li>
 							      <a href="#" class="item-link smart-select" data-back-text="返回" data-open-in="popup">
 							        <select name="painting">
@@ -214,6 +214,35 @@
 		$$('.form-to-json').on('click', function(){
 			//wx.closeWindow();
 		});
+		
+		var load = function(){
+			$$.ajax({
+				url: "http://localhost/api/course",
+				method: "GET",
+		  	  	contentType: "application/json",
+		  	  	beforeSend: function(xhr) {
+			       xhr.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
+			  	},
+		  	  	dataType: 'json',
+				success: function(data, status, xhr){
+					if(data.code === 0){
+						var li_smart_select_start = "<li><a class='item-link smart-select' data-back-text='返回' data-open-in='popup'>";
+						var li_smart_select_end = "<div class='item-after'>点此选择具体活动</div></div></div></a></li>";
+						for(classification in data.result){
+							var smart_select_start = "<select name='" + classification + "'" + "><option value='default' selected>请选择一项具体活动并返回提交预约</option>";
+							var li_smart_select_all = li_smart_select_start + smart_select_start;
+							var smart_select_end = "</select><div class='item-content'><div class='item-inner'><div class='item-title'>" + classification + "</div>";
+							for(count_i in data.result[classification]){
+								var smart_select_option = "<option value='" + data.result[classification][count_i].code + "'>" + data.result[classification][count_i].name + "</option>";
+								li_smart_select_all += smart_select_option;
+							}
+							li_smart_select_all = li_smart_select_all + smart_select_end + li_smart_select_end;
+							$$("#subscribe-ul").append(li_smart_select_all);
+						}
+					}
+				},
+			});
+		}
 		
 		var mainView = myApp.addView('.view-main');
 		$$('#subscribe').on('click', function(evt) {
