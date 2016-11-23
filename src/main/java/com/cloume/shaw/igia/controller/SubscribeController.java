@@ -26,7 +26,6 @@ import com.cloume.shaw.igia.common.resource.User;
 import com.cloume.shaw.igia.common.rest.RestResponse;
 import com.cloume.shaw.igia.common.utils.Const;
 import com.cloume.shaw.igia.repository.CourseRepository;
-import com.cloume.shaw.igia.repository.UserRepository;
 
 @Controller
 @RequestMapping(value = "/subscribe")
@@ -34,10 +33,7 @@ public class SubscribeController extends AbstractController {
 	
 	@Autowired
 	private CourseRepository courseRepository;
-	
-	@Autowired
-	private UserRepository userRepository;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String getSubscribePage(HttpServletRequest request,
 			@RequestParam(value = "openid", required = false, defaultValue = "") String openId,

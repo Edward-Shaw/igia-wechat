@@ -141,7 +141,10 @@
 												已预约：
 											</div>
 											<div class="item-input">
-												<span style="color: red">${subscribe_details}</span>
+												<span style="color: red">						  
+												  <c:forEach var="course" items="${subscribe_courses}">	
+												  	  ${course.name}
+												  </c:forEach></span>
 											</div>
 										</div>
 									</div>

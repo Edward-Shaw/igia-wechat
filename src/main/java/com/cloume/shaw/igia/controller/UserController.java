@@ -26,6 +26,7 @@ import com.cloume.shaw.igia.common.resource.User;
 import com.cloume.shaw.igia.common.rest.RestResponse;
 import com.cloume.shaw.igia.common.utils.Const;
 import com.cloume.shaw.igia.repository.CourseRepository;
+import com.cloume.shaw.igia.repository.UserRepository;
 
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpService;
@@ -42,7 +43,7 @@ public class UserController extends AbstractController {
 	
 	@Autowired
 	private CourseRepository courseRepository;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String userPage(HttpServletRequest request){
 		
