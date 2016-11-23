@@ -122,7 +122,7 @@
 		
 		var load = function(){
 			$$.ajax({
-				url: "http://localhost/api/course",
+				url: "api/course",
 				method: "GET",
 		  	  	contentType: "application/json",
 		  	  	beforeSend: function(xhr) {
