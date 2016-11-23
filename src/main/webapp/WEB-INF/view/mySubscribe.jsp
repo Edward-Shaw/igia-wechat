@@ -30,9 +30,6 @@
 	var $$ = Framework7.$;
 	
 	var load = function(){
-		console.log("test1");
-		console.log($("#user"));
-		console.log("test2");
 		$$.ajax({
 		  	  url: "http://igia.tunnel.qydev.com/igia/jsapisign",
 		  	  method: 'POST',
