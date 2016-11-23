@@ -43,8 +43,7 @@ public class SubscribeController extends AbstractController {
 			@RequestParam(value = "openid", required = false, defaultValue = "") String openId,
 			@RequestParam(value = "v", required = false, defaultValue = "") String v,
 			@RequestParam(value = "t", required = false, defaultValue = "") String t){
-		//User userSession = (User) request.getSession().getAttribute("$_USER");
-		User userSession = userRepository.findById("o4T4sv3pE8Cvwe5l5mazTGNdsBNk");
+		User userSession = (User) request.getSession().getAttribute("$_USER");
 		if(userSession == null){
 			return "subscribe";
 		}
@@ -138,8 +137,8 @@ public class SubscribeController extends AbstractController {
 	public RestResponse<Subscribe> submitSubscribeInfo(HttpServletRequest request, 
 			@RequestBody Map<String, Object> body){
 		
-		//User userSession = (User) request.getSession().getAttribute("$_USER");
-		User userSession = userRepository.findById("o4T4sv3pE8Cvwe5l5mazTGNdsBNk");
+		User userSession = (User) request.getSession().getAttribute("$_USER");
+		
 		if(userSession == null){
 			return RestResponse.bad(-1, "微信错误，请退出公众号后重新进入");
 		}
