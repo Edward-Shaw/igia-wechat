@@ -164,7 +164,7 @@
 				}
 			}
 			
-			if(count > 2){
+			if(count > 3){
 				myApp.alert("一次只能最多只能同时预约2个活动", '预约超过上限!');
 				return false;
 			}else if(count == 0){
