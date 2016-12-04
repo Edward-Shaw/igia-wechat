@@ -145,7 +145,7 @@ public class SubscribeController extends AbstractController {
 		SimpleUser user = subscribe.new SimpleUser(openId, userSession.getName(), userSession.getMobile(), userSession.getAddress());
 		subscribe.setUser(user);
 		for(Map.Entry<String, Object> tempItem : body.entrySet()){
-			if(tempItem.getValue().toString().compareToIgnoreCase("default") != 0){
+			if(tempItem.getValue().toString().compareToIgnoreCase("default") != 0 && tempItem.getKey().toString().compareToIgnoreCase("activity_class") != 0){
 				subscribe.getCourses().add(tempItem.getValue().toString());
 			}
 		}

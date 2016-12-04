@@ -101,7 +101,7 @@
 								        </div>
 							      	</a>
 							      </li>
-							  </ul>
+							  	</ul>
 							  <div class="list-block-label">预约说明：一次最多只能预约两个活动；预约成功后我们将通过电话与您联系确认。</div>
 							</div>
 						</form>
@@ -157,21 +157,21 @@
 			var count = 0;
 			var time_selected = true;
 			for(item in formData){
-				if(formData[item] == "default"){
+				if(formData[item] != "default" && formData[item] != "time_default"){
 					count++;
 				}else if(formData[item] == "time_default"){
 					time_selected = false;
 				}
 			}
-			/*
-			if(count < 4){
+			
+			if(count > 2){
 				myApp.alert("一次只能最多只能同时预约2个活动", '预约超过上限!');
 				return false;
-			}else if(count == 6){
+			}else if(count == 0){
 				myApp.alert("请进入活动列表页面选择一个具体活动进行预约", '没有预约!');
 				return false;
 			}
-			*/
+
 			if(!time_selected){
 				myApp.alert("请前往通知公告栏的'作息更新'查看活动班信息", "请选择一个活动班");
 				return false;
