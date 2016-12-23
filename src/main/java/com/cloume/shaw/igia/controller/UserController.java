@@ -22,31 +22,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cloume.shaw.igia.common.resource.Course;
 import com.cloume.shaw.igia.common.resource.Subscribe;
+import com.cloume.shaw.igia.common.resource.Task;
 import com.cloume.shaw.igia.common.resource.User;
 import com.cloume.shaw.igia.common.rest.RestResponse;
 import com.cloume.shaw.igia.common.utils.Const;
 import com.cloume.shaw.igia.repository.CourseRepository;
-import com.cloume.shaw.igia.repository.UserRepository;
-
-import me.chanjar.weixin.mp.api.WxMpConfigStorage;
-import me.chanjar.weixin.mp.api.WxMpService;
+import com.cloume.shaw.igia.repository.TaskRepository;
 
 @Controller
 @RequestMapping("/user")
 public class UserController extends AbstractController {
 	
-	@Autowired 
-	private WxMpConfigStorage wxMpConfigStorage;
-	
-	@Autowired 
-	private WxMpService wxMpService;
-	
 	@Autowired
 	private CourseRepository courseRepository;
+	
+	@Autowired
+	private TaskRepository taskRepository;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String userPage(HttpServletRequest request){
-		
+
 		User userSession = (User) request.getSession().getAttribute("$_USER");
 		if(userSession == null){
 			return "register";
@@ -54,6 +49,7 @@ public class UserController extends AbstractController {
 		
 		//根据open_id查找用户的注册信息，如果没有则跳转到注册页面进行注册
 		String openId = userSession.getId();
+
 		User userMongo = getMongoTemplate().findById(openId, User.class);
 		if(userMongo == null || !userMongo.isBanned()){
 			return "register";
@@ -65,13 +61,19 @@ public class UserController extends AbstractController {
 		Subscribe subscribe = getMongoTemplate().findOne(query, Subscribe.class);
 		if(subscribe != null){
 			List<Course> courses = new ArrayList<>();
+			List<Task> tasks = new ArrayList<>();
 			for(String item : subscribe.getCourses()){
 				Course course = courseRepository.findByCode(item);
 				if(course != null){
 					courses.add(course);
+					Task task = taskRepository.findTaskByCourseName(course.getName());
+					if(task != null && (task.getState().compareToIgnoreCase(Const.STATE_PUBLISHED) == 0)){
+						tasks.add(task);
+					}
 				}
 			}
 			request.setAttribute("subscribe_courses", courses);
+			request.setAttribute("tasks", tasks);
 			
 			String subscribeClass = "未选择时间";
 			switch(subscribe.getSubscribeClass()){
@@ -122,7 +124,7 @@ public class UserController extends AbstractController {
 			request.setAttribute("subscribe_state", state);
 			Date date = new Date(subscribe.getCreateTime());
 			SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			request.setAttribute("subscribe_time", dateFormatter.format(date));
+			request.setAttribute("subscribe_time", dateFormatter.format(date));			
 		}
 		
 		return "user";

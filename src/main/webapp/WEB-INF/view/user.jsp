@@ -175,6 +175,28 @@
 								</li>
 							</ul>
 						</form>
+						
+						<div class="content-block-title">我的课程作业</div>
+						<form id="info-form" class="list-block store-data">
+							<ul>
+								<c:forEach var="task" items="${tasks}">	
+								  	<li>
+										<div class="item-content">
+											<div class="item-inner">
+												<div class="item-title label">
+													${task.courseName}
+												</div>
+												<div class="item-input">
+													<span style="color: red">
+														${task.content}
+													</span>
+												</div>
+											</div>
+										</div>
+									</li>
+								</c:forEach>
+							</ul>
+						</form>
 
 						<p style="margin-left: 5%">
 							<a href="#" class="button form-to-json button-big active" style="width: 95%">确定</a>
