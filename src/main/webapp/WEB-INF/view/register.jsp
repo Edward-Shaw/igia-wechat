@@ -127,18 +127,6 @@
 										</div>
 									</div>
 								</li>
-								<li>
-									<div class="item-content">
-										<div class="item-inner">
-											<div class="item-title label">
-												密码<span style="color: red">*</span>
-											</div>
-											<div class="item-input">
-												<input type="password" name="password" placeholder="请输入密码" />
-											</div>
-										</div>
-									</div>
-								</li>
 							</ul>
 						</form>
 
@@ -207,10 +195,6 @@
 			if(formData["email"] == ''){
 				myApp.alert("请输入您的邮箱地址，便于接收练习资料!", '邮箱地址不能为空!');
 				return true;
-			}
-			if(formData["password"] == ''){
-				myApp.alert("请输入您的密码", '密码不能为空!');
-				return false;
 			}
 			if(formData["code"] == ''){
 				myApp.alert("请输入图片中的数字", '验证码不能为空!');
