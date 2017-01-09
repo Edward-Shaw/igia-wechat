@@ -58,6 +58,7 @@ public class UserController extends AbstractController {
 		request.setAttribute("user", userMongo);
 		
 		Query query = new Query(Criteria.where("user.openId").is(openId));
+		query.addCriteria(Criteria.where("state").ne(Const.STATE_DELETED));
 		Subscribe subscribe = getMongoTemplate().findOne(query, Subscribe.class);
 		if(subscribe != null){
 			List<Course> courses = new ArrayList<>();
