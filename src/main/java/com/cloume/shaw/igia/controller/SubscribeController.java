@@ -48,6 +48,7 @@ public class SubscribeController extends AbstractController {
 		openId = userSession.getId();
 		
 		Query query = new Query(Criteria.where("user.openId").is(openId));
+		query.addCriteria(Criteria.where("state").ne(Const.STATE_DELETED));
 		Subscribe subscribe = getMongoTemplate().findOne(query, Subscribe.class);
 		if(subscribe != null){
 			request.setAttribute("subscribe", subscribe);
@@ -171,7 +172,7 @@ public class SubscribeController extends AbstractController {
 		
 		String code = "";
 		synchronized(this){
-			long count = getMongoTemplate().count(Query.query(Criteria.where("code").regex(pattern).and("state").ne(Const.STATE_DELETED)), Subscribe.class, "subscribe") + 1;
+			long count = getMongoTemplate().count(Query.query(Criteria.where("code").regex(pattern)), Subscribe.class, "subscribe") + 1;
 			code = prefix + "-" + count;
 		}
 		
