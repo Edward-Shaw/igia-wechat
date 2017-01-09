@@ -116,6 +116,7 @@
 										</div>
 									</div>
 								</li>
+								<!-- 
 								<li>
 									<div class="item-content">
 										<div class="item-inner">
@@ -128,6 +129,7 @@
 										</div>
 									</div>
 								</li>
+								 -->
 							</ul>
 						</form>
 						<div class="content-block-title">我的活动预约</div>
