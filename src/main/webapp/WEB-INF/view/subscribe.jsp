@@ -102,7 +102,7 @@
 							      	</a>
 							      </li>
 							  	</ul>
-							  <div class="list-block-label">预约说明：一次最多只能预约两个活动；预约成功后我们将通过电话与您联系确认。</div>
+							  <div class="list-block-label">预约说明：请参考“通知公告”菜单栏的课程时间预约课程；预约成功后我们将通过电话与您联系确认。</div>
 							</div>
 						</form>
 						<p style="margin-left: 5%">
@@ -164,8 +164,8 @@
 				}
 			}
 			
-			if(count > 3){
-				myApp.alert("一次只能最多只能同时预约2个活动", '预约超过上限!');
+			if(count > 7){
+				myApp.alert("您预约的活动太多啦!", '预约超过上限!');
 				return false;
 			}else if(count == 0){
 				myApp.alert("请进入活动列表页面选择一个具体活动进行预约", '没有预约!');
