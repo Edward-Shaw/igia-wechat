@@ -35,7 +35,7 @@
 			method: "GET",
 			success: function(data, status, xhr){
 				if(data == "registered"){
-					myApp.alert("请前往'活动预约'和'会员主页'菜单查看个人信息并预约活动!", "您已经注册过", function(){
+					myApp.alert("请前往'在线预约'和'我的主页'菜单查看个人信息并预约活动!", "您已经注册过", function(){
 						wx.closeWindow();
 					});
 				}
