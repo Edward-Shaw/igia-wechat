@@ -220,6 +220,14 @@
 				  		myApp.alert(data.message, '不能重复注册!', function () {
 				  			wx.closeWindow();
 				  	    });
+			  	  	}else if(data.code == -1){
+				  		myApp.alert(data.message, '请从微信进入!', function () {
+				  			wx.closeWindow();
+				  	    });
+			  	  	}else if(data.code == -4){
+				  		myApp.alert(data.message, '请补全注册信息!', function () {
+				  			wx.closeWindow();
+				  	    });	
 			  	  	}else{
 				  		myApp.alert(data.message, '注册成功!', function () {
 				  			wx.closeWindow();

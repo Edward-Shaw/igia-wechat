@@ -141,9 +141,9 @@ public class UserController extends AbstractController {
 	public RestResponse<User> register(HttpServletRequest request,
 			@RequestBody Map<String, Object> body
 			){
-		final String[] fields = {"name", "mobile", "password", "address", "email"};
+		final String[] fields = {"name", "mobile", "address", "email"};
 		if(!verify(body, Arrays.asList(fields))){
-			return RestResponse.bad(404, String.format("properties %s can not missing", StringUtils.join(fields, ',')), null);
+			return RestResponse.bad(-4, String.format("properties %s can not missing", StringUtils.join(fields, ',')), null);
 		}
 		
 		User userSession = (User) request.getSession().getAttribute("$_USER");
