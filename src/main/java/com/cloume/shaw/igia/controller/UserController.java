@@ -160,6 +160,7 @@ public class UserController extends AbstractController {
 		update.set("mobile", body.get("mobile"));
 		update.set("address", body.get("address"));
 		update.set("email", body.get("email"));
+		update.set("name", body.get("name"));
 		int res = getMongoTemplate().updateMulti(new Query(Criteria.where("_id").is(openId)), update, User.class).getN();
 		if(res != 1){
 			return new RestResponse<User>(-3, "信息登记失败,此用户不存在,请退出公众号重新进入!", userSession);
