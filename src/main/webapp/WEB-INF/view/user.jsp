@@ -63,7 +63,7 @@
 		<div class="view view-main">
 			<div class="pages">
 				<div data-page="teacher" class="page">
-					<div class="page-content" style="padding-top: 20px;">
+					<div class="page-content" style="padding-top: 10px;">
 						<div class="content-block-title">我的会员信息</div>
 						<form id="info-form" class="list-block store-data">
 							<ul>
@@ -75,7 +75,7 @@
 												姓名：
 											</div>
 											<div class="item-input">
-												<span style="color: red">${user.name}</span>
+												<span style="font-color:CCCCCC">${user.name}</span>
 											</div>
 										</div>
 									</div>
@@ -87,7 +87,7 @@
 												手机号：
 											</div>
 											<div class="item-input">
-												<span style="color: red">${user.mobile}</span>
+												<span style="font-color:CCCCCC">${user.mobile}</span>
 											</div>
 										</div>
 									</div>
@@ -99,7 +99,7 @@
 												邮箱地址：
 											</div>
 											<div class="item-input">
-												<span style="color: red">${user.email}</span>
+												<span style="font-color:CCCCCC">${user.email}</span>
 											</div>
 										</div>
 									</div>
@@ -111,7 +111,7 @@
 												地址：
 											</div>
 											<div class="item-input">
-												<span style="color: red">${user.address}</span>
+												<span style="font-color:CCCCCC">${user.address}</span>
 											</div>
 										</div>
 									</div>
@@ -143,7 +143,7 @@
 												已预约：
 											</div>
 											<div class="item-input">
-												<span style="color: red">						  
+												<span style="font-size:15px;font-color:CCCCCC">						  
 												  <c:forEach var="course" items="${subscribe_courses}">	
 												  	  ${course.name}
 												  </c:forEach></span>
@@ -158,7 +158,7 @@
 												预约状态：
 											</div>
 											<div class="item-input">
-												<span style="color: red">${subscribe_state}</span>
+												<span style="font-color:CCCCCC">${subscribe_state}</span>
 											</div>
 										</div>
 									</div>
@@ -170,7 +170,7 @@
 												预约时间：
 											</div>
 											<div class="item-input">
-												<span style="color: red">${subscribe_time}</span>
+												<span style="font-color:CCCCCC">${subscribe_time}</span>
 											</div>
 										</div>
 									</div>

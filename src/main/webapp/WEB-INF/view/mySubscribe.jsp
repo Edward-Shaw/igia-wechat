@@ -87,7 +87,7 @@
 						  <p>预约提交时间：${subscribe_time}</p>
 						  <p>预约活动：</p>
 						  <c:forEach var="course" items="${subscribe_courses}">	
-						  	  <center><p>${course.classification}：${course.name}</p></center>
+						  	  <center><p style="font-size:16px;font-color:CCCCCC">${course.classification}：${course.name}</p></center>
 						  </c:forEach>
 						  <div class="list-block-label" style="margin-left:-20px;">您的活动已预约成功，我们将尽快和您联系。</div>
 						</div>
